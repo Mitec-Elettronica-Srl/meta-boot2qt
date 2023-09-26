@@ -5,12 +5,12 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="refs/tags/4.3_M2"
+           revision="refs/tags/4.3_M3"
            upstream="master"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="refs/tags/4.3_M2"
+           revision="refs/tags/4.3_M3"
            upstream="master"
            path="sources/meta-mingw"/>
 
@@ -19,7 +19,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="491b7592f4408a1d7f32ddfb12b2c1613bcadfe1"
+           revision="c40aebd422e60126c3b18e35c20a1cb38a795a52"
            upstream="master"
            path="sources/meta-openembedded"/>
 
@@ -40,19 +40,19 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="e4d721f735aba27f0f1a478dba1b28f738cd1e9d"
+           revision="66552db05b59eecd551a1cf2f94cfaf9239a7379"
            upstream="master"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="93ba05e3a16a028b770fa1e813b13eb87a59ac63"
+           revision="bccd93f1ceece608e69799b6fc8f79e8a519f89e"
            upstream="master"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="5e2f79a6faf91f73d7500bf38ac7795a263d9e36"
+           revision="c0aec2f628098eb5acaf54d40dc7d7844d8b913a"
            upstream="master"
            path="sources/meta-raspberrypi"/>
 
@@ -61,7 +61,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="7368b9654e181ab0f3214df2cf40328f54237109"
+           revision="cc04677a2717be485bf9cecf4a3d48f8a1e601cc"
            upstream="master"
            path="sources/meta-intel"/>
 
@@ -70,7 +70,7 @@
           fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
-           revision="4c55df8dc6ee25b4419b55025fb4785fc3e7617d"
+           revision="1e7585720141313d046bb7265eec2c0c65ec81fa"
            upstream="master"
            path="sources/meta-tegra"/>
 </manifest>
