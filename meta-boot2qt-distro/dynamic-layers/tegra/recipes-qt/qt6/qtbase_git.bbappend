@@ -27,5 +27,5 @@
 ##
 ############################################################################
 
-PACKAGECONFIG += "kms"
+PACKAGECONFIG += "eglfs-egldevice"
 PACKAGECONFIG:remove = "gbm"
