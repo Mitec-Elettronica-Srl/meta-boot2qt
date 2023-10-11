@@ -175,6 +175,7 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
             "--dockerRepo", "boot2qt-@MACHINE@",
             "--dockerTag", "@VERSION@",
             "--dockerMappedPaths", installer.value("TargetDir"),
+            "--dockerClangdExecutable", dockerPrefix + "/usr/bin/clangd",
             "UNDOEXECUTE",
             "@SDKToolBinary@", "rmDev", "--id", component.name]);
     }
