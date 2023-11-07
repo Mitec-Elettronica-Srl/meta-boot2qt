@@ -35,6 +35,9 @@ do_unpack[depends] += "p7zip-native:do_populate_sysroot"
 
 inherit bin_package python3-dir nativesdk
 
+# Fix dependency to compilers
+BASEDEPENDS:class-nativesdk = "${BASE_DEFAULT_DEPS}"
+
 PV = "3.5.2"
 
 S = "${WORKDIR}"
