@@ -10,7 +10,7 @@
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="refs/tags/yocto-4.3"
+           revision="49617a253e09baabbf0355bc736122e9549c8ab2"
            upstream="nanbield"
            path="sources/meta-mingw"/>
 
