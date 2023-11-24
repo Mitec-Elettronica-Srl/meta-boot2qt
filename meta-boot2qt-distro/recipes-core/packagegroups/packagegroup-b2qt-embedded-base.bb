@@ -47,6 +47,7 @@ RDEPENDS:${PN} = "\
         ttf-freefont-mono \
         ttf-tlwg \
         otf-noto \
+        ttf-titilliumweb \
         tzdata \
         tzdata-americas \
         tzdata-asia \
