@@ -61,3 +61,6 @@ apply_ci_fixes () {
     # root is expected to be 0755
     chmod g-w ${SDK_OUTPUT}${SDKTARGETSYSROOT}
 }
+
+# Append current layer revision to toolchain file name
+TOOLCHAIN_OUTPUTNAME:append = "-${@oe.buildcfg.get_metadata_git_revision(d.getVar('BOOT2QTBASE'), None)[:8]}"
