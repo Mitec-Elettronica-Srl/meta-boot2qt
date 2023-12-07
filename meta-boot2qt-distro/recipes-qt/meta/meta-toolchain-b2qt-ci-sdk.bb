@@ -63,4 +63,4 @@ apply_ci_fixes () {
 }
 
 # Append current layer revision to toolchain file name
-TOOLCHAIN_OUTPUTNAME:append = "-${@oe.buildcfg.get_metadata_git_revision(d.getVar('BOOT2QTBASE'), None)[:8]}"
+TOOLCHAIN_OUTPUTNAME:append = "-${@oe.buildcfg.get_metadata_git_revision(d.getVar('BOOT2QTBASE'))[:8]}"
