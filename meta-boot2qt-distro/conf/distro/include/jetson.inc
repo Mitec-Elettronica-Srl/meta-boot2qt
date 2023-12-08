@@ -27,28 +27,10 @@
 ##
 ############################################################################
 
-# without the distro_bootpart that's not supported by stock u-boot
-KERNEL_ROOTSPEC = "root=/dev/mmcblk${devnum}p1 rw rootwait"
-KERNEL_ROOTSPEC:jetson-nano-2gb-devkit = "root=/dev/mmcblk0p1 rw rootwait"
-KERNEL_ROOTSPEC:jetson-nano-devkit = "root=/dev/mmcblk0p1 rw rootwait"
-
-INITRAMFS_MAXSIZE = "165888"
-IMAGE_ROOTFS_ALIGNMENT = "1024"
-UBOOT_SUFFIX = "bin"
-
-IMAGE_FSTYPES += "wic.xz"
-WKS_FILE = "tegra-bootdisk.wks.in"
-
 DEPLOY_CONF_NAME:jetson-agx-xavier-devkit = "NVIDIA Jetson AGX Xavier Development Kit"
 DEPLOY_CONF_NAME:jetson-agx-orin-devkit = "NVIDIA Jetson AGX Orin Development Kit"
 
-DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
-
-IMAGE_CLASSES += "image_types_tegra_b2qt"
-
 QBSP_IMAGE_CONTENT += "\
-    ${IMAGE_LINK_NAME}.${DEPLOY_CONF_IMAGE_TYPE} \
-    ${IMAGE_LINK_NAME}.conf \
     ${IMAGE_LINK_NAME}.info \
     ${IMAGE_LINK_NAME}.tegraflash.tar.gz \
     "
