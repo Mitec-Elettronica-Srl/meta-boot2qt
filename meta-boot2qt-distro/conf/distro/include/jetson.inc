@@ -40,6 +40,7 @@ IMAGE_FSTYPES += "wic.xz"
 WKS_FILE = "tegra-bootdisk.wks.in"
 
 DEPLOY_CONF_NAME:jetson-agx-xavier-devkit = "NVIDIA Jetson AGX Xavier Development Kit"
+DEPLOY_CONF_NAME:jetson-agx-orin-devkit = "NVIDIA Jetson AGX Orin Development Kit"
 
 DEPLOY_CONF_IMAGE_TYPE = "wic.xz"
 
