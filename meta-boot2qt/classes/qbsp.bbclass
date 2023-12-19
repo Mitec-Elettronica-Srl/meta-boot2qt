@@ -108,7 +108,7 @@ patch_installer_files() {
 
 prepare_qbsp() {
     # Toolchain component
-    if [ -e ${DEPLOY_DIR}/sdk/${SDK_NAME} ]; then
+    if [ -e ${SDK_DEPLOY}/${SDK_NAME} ]; then
         COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.toolchain"
         mkdir -p ${COMPONENT_PATH}/meta
         mkdir -p ${COMPONENT_PATH}/data
@@ -118,9 +118,9 @@ prepare_qbsp() {
         patch_installer_files ${COMPONENT_PATH}/meta
 
         if [ "${SDK_POSTFIX}" = "${SDK_POSTFIX:sdkmingw32}" ]; then
-            cp ${DEPLOY_DIR}/sdk/${SDK_NAME} ${COMPONENT_PATH}/data/toolchain.${SDK_POSTFIX}
+            cp ${SDK_DEPLOY}/${SDK_NAME} ${COMPONENT_PATH}/data/toolchain.${SDK_POSTFIX}
         else
-            7za a -mx=0 ${COMPONENT_PATH}/data/toolchain.7z ${DEPLOY_DIR}/sdk/${SDK_NAME}
+            7za a -mx=0 ${COMPONENT_PATH}/data/toolchain.7z ${SDK_DEPLOY}/${SDK_NAME}
         fi
     fi
 
