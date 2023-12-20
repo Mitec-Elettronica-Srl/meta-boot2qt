@@ -5,13 +5,13 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="refs/tags/yocto-4.3"
-           upstream="nanbield"
+           revision="070aa227057e4913cf77c2465393a5a8398d5641"
+           upstream="master"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="49617a253e09baabbf0355bc736122e9549c8ab2"
-           upstream="nanbield"
+           revision="9595f44230fd6e5ca88df874706d69c0160188b8"
+           upstream="master"
            path="sources/meta-mingw"/>
 
   <!-- OpenEmbedded -->
@@ -19,8 +19,8 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="1750c66ae8e4268c472c0b2b94748a59d6ef866d"
-           upstream="nanbield"
+           revision="9c91e6018dc32ee337b6d2f47538ffda3742cc58"
+           upstream="master"
            path="sources/meta-openembedded"/>
 
   <!-- Qt -->
@@ -40,19 +40,19 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="80a6f043d7d716a40054de5d1bfa0ea8ef7c7c67"
+           revision="6d583ef990ebfbf20afa1e78722be862ac1ce81b"
            upstream="master"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision= "bf46965ca7b5e004f8db68c7fc4defeafe83e0f2"
+           revision= "7725256e3859b62f1ff201db7f2cf7026c17656d"
            upstream="master"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="6ef8b576b8c24177c75d676e5846f826bc0951d8"
+           revision="4c033eb07442959ed76d769fd2b4649612327155"
            upstream="master"
            path="sources/meta-raspberrypi"/>
 
@@ -61,8 +61,8 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="7b62d64d1ed1b31a8be7b1ca36bd97049b3b2324"
-           upstream="nanbield"
+           revision="5cfefd9a8ff1f5a3534c1ba9d7d7f6971ed5d56f"
+           upstream="master"
            path="sources/meta-intel"/>
 
   <!-- NVIDIA -->
@@ -70,7 +70,7 @@
           fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
-           revision="0ecaf54be217906e99de63deeb1b2c3d2d90a8a0"
+           revision="53daacb12ae5b641a4c573cce9a28c673ad60701"
            upstream="master"
            path="sources/meta-tegra"/>
 </manifest>
