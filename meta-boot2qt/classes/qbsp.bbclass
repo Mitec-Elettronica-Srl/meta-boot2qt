@@ -73,6 +73,7 @@ SDK_POSTFIX = "sh"
 SDK_POSTFIX:sdkmingw32 = "tar.xz"
 REAL_MULTIMACH_TARGET_SYS = "${TUNE_PKGARCH}${TARGET_VENDOR}-${TARGET_OS}"
 SDK_MACHINE = "${@d.getVar('SDKMACHINE') or '${SDK_ARCH}'}"
+SDK_DEPLOY ?= "${DEPLOY_DIR}/sdk"
 
 B = "${WORKDIR}/build"
 
