@@ -44,7 +44,7 @@ TOOLCHAIN_TARGET_TASK += "packagegroup-qt6-modules ${MACHINE_EXTRA_INSTALL_SDK}"
 PACKAGE_EXCLUDE_COMPLEMENTARY += "\
   ^libqt6 \
   qmlcompilerplus qt3d qt5compat qtapplicationmanager qtbase qtcharts \
-  qtcoap qtconnectivity qtdatavis3d qtdeclarative qtdeviceutilities \
+  qtcoap qtconnectivity qtdatavis3d qtdeclarative qtdeviceutilities qtgraphs \
   qtgrpc qthttpserver qtimageformats qtinsighttracker qtinterfaceframework \
   qtlanguageserver qtlocation qtlottie qtmqtt qtmultimedia qtnetworkauth \
   qtopcua qtpdf qtpositioning qtquick3d qtquick3dphysics qtquickdesigner-components \
