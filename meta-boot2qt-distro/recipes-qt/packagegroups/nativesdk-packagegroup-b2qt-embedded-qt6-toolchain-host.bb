@@ -37,3 +37,8 @@ RDEPENDS:${PN} += "\
     nativesdk-packagegroup-b2qt-embedded-toolchain-host \
     nativesdk-packagegroup-qt6-toolchain-host \
     "
+
+RDEPENDS:${PN}:append:mingw32 = "\
+    nativesdk-qtinterfaceframework-dev \
+    nativesdk-qtinterfaceframework-tools \
+"
