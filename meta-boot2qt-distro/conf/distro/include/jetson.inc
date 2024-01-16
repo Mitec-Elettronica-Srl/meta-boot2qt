@@ -30,6 +30,10 @@
 DEPLOY_CONF_NAME:jetson-agx-xavier-devkit = "NVIDIA Jetson AGX Xavier Development Kit"
 DEPLOY_CONF_NAME:jetson-agx-orin-devkit = "NVIDIA Jetson AGX Orin Development Kit"
 
+# Attach unsigned kernel image and dtb into boot folder of rootfs
+MACHINE_EXTRA_RRECOMMENDS:append = " kernel-devicetree"
+RRECOMMENDS:${KERNEL_PACKAGE_NAME}-base:append = " kernel-image"
+
 QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.info \
     ${IMAGE_LINK_NAME}.tegraflash.tar.gz \
