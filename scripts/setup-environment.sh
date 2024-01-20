@@ -42,9 +42,17 @@ while test -n "$1"; do
 done
 
 THIS_SCRIPT="setup-environment.sh"
-if [ "$(basename -- $0)" = "${THIS_SCRIPT}" ]; then
-  echo "Error: This script needs to be sourced. Please run as '. $0'"
-  return 1
+
+if [[ $ZSH_EVAL_CONTEXT=="toplevel" || $ZSH_EVAL_CONTEXT=="toplevel:file" ]]; then
+  if [[ "$ZSH_EVAL_CONTEXT" == "toplevel" ]]; then
+    echo "Error: This script needs to be sourced. Please run as '. $0'"
+    return 1
+  fi
+else
+  if [ "$(basename -- $0)" = "${THIS_SCRIPT}" ]; then
+    echo "Error: This script needs to be sourced. Please run as '. $0'"
+    return 1
+  fi
 fi
 
 if [ -z "$MACHINE" ]; then
