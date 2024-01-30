@@ -1,0 +1,12 @@
+[Unit]
+Description=Boot to Qt Demo Launcher
+After=systemd-user-sessions.service
+ConditionPathExists=!/usr/bin/b2qt
+Conflicts=startupscreen.service
+
+[Service]
+User=root
+ExecStart=-/usr/bin/appcontroller /usr/bin/qtlauncher
+
+[Install]
+WantedBy=multi-user.target
