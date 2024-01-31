@@ -5,7 +5,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="070aa227057e4913cf77c2465393a5a8398d5641"
+           revision="6e00774a79b3df07c5e6732c6929ee2e77950592"
            upstream="master"
            path="sources/poky"/>
   <project name="meta-mingw"
@@ -19,7 +19,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="9c91e6018dc32ee337b6d2f47538ffda3742cc58"
+           revision="4dbbef7a39ad18206ca6cebf7a1e08aebe5b5a65"
            upstream="master"
            path="sources/meta-openembedded"/>
 
@@ -40,19 +40,19 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="6d583ef990ebfbf20afa1e78722be862ac1ce81b"
+           revision="78862da60e5d90435c4f6793fa7090b786b8585e"
            upstream="master"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision= "7725256e3859b62f1ff201db7f2cf7026c17656d"
+           revision= "baa33812b28d52c9032cbee99eb97c54ae6b6a96"
            upstream="master"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="4c033eb07442959ed76d769fd2b4649612327155"
+           revision="b859bc3eca344a585e19390018e97bfba5a74c10"
            upstream="master"
            path="sources/meta-raspberrypi"/>
 
@@ -61,7 +61,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="5cfefd9a8ff1f5a3534c1ba9d7d7f6971ed5d56f"
+           revision="69c711ec0af49ff06d97af4f53faa64cfce178a2"
            upstream="master"
            path="sources/meta-intel"/>
 
@@ -70,7 +70,7 @@
           fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
-           revision="53daacb12ae5b641a4c573cce9a28c673ad60701"
+           revision="b86c2aebe266c415d64f37318274be2251de9eff"
            upstream="master"
            path="sources/meta-tegra"/>
 </manifest>
