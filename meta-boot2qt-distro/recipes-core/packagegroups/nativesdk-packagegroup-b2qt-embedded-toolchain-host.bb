@@ -31,7 +31,8 @@ DESCRIPTION = "Host packages for B2Qt on embedded Linux SDK"
 PR = "r0"
 LICENSE = "The-Qt-Company-Commercial"
 
-inherit packagegroup nativesdk
+inherit packagegroup
+inherit_defer nativesdk
 
 MACHINE_EXTRA_INSTALL_SDK_HOST ?= ""
 

@@ -31,7 +31,8 @@ DESCRIPTION = "Host packages for B2Qt embedded Qt6 SDK"
 LICENSE = "The-Qt-Company-Commercial"
 PR = "r0"
 
-inherit packagegroup nativesdk
+inherit packagegroup
+inherit_defer nativesdk
 
 RDEPENDS:${PN} += "\
     nativesdk-packagegroup-b2qt-embedded-toolchain-host \
