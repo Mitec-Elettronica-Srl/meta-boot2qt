@@ -53,6 +53,7 @@ SRCREV_FORMAT = "${QT_MODULE}"
 SRCREV_metadata = "28042f4e7cb7ade04e032499e77d4fa49c679fa8"
 
 DEPENDS += "qtbase qtdeclarative qtdeclarative-native qtwayland qtwayland-native"
+RDEPENDS:${PN} += "qtdoc-examples"
 
 S = "${WORKDIR}/git"
 
