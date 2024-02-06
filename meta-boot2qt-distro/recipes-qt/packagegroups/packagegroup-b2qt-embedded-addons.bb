@@ -34,7 +34,11 @@ inherit packagegroup
 
 PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 
+USE_QT_DEMO_LAUNCHER ?= "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', \
+    bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.7', '>'), False, d)}"
+
 RDEPENDS:${PN} += " \
+    ${@'boot2qt-demolauncher' if bb.utils.to_boolean(d.getVar('USE_QT_DEMO_LAUNCHER')) else ''} \
     boot2qt-appcontroller \
     boot2qt-startupscreen \
     qdb \
