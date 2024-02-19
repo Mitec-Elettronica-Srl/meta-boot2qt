@@ -13,6 +13,11 @@
            revision="ed272245bf1c131c42b122852334b5ce6c4b28c0"
            upstream="master"
            path="sources/meta-mingw"/>
+  <project name="meta-virtualization"
+           remote="yocto"
+           revision="bd67612b66412754b092f336345470dfeda83c29"
+           upstream="master"
+           path="sources/meta-virtualization" />
 
   <!-- OpenEmbedded -->
   <remote name="oe"

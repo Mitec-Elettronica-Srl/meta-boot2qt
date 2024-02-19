@@ -40,7 +40,7 @@ QBSP_IMAGE_CONTENT += "\
 QBSP_LICENSE_FILE ?= "${FSL_EULA_FILE}"
 QBSP_LICENSE_NAME ?= "NXP Semiconductors Software License Agreement"
 
-GPULESS_FEATURES = "wayland opengl vulkan webengine"
+GPULESS_FEATURES = "wayland opengl vulkan webengine virtualization"
 DISTRO_FEATURES:remove:mx6ul-generic-bsp = "${GPULESS_FEATURES}"
 DISTRO_FEATURES:remove:mx7-generic-bsp = "${GPULESS_FEATURES}"
 DISTRO_FEATURES:remove:mx93-generic-bsp = "${GPULESS_FEATURES}"
