@@ -30,5 +30,5 @@
 do_configure:append() {
     echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_KMS_ATOMIC=0" >> ${WORKDIR}/defaults
-    echo "QT_WAYLAND_CLIENT_BUFFER_INTEGRATION=linux-dmabuf-unstable-v1" >> ${WORKDIR}/defaults
+    echo "QT_WAYLAND_HARDWARE_INTEGRATION=linux-dmabuf-unstable-v1" >> ${WORKDIR}/defaults
 }
