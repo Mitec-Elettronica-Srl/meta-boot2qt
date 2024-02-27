@@ -37,10 +37,6 @@ PACKAGEGROUP_DISABLE_COMPLEMENTARY = "1"
 USE_QT_DEMO_LAUNCHER ?= "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', \
     bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.7', '>'), False, d)}"
 
-USE_SQUISH ?= "${@bb.utils.contains('QT_INTERNAL_BUILD', '1', \
-    bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.6', '>') & \
-    bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.8', '<'), False, d)}"
-
 RDEPENDS:${PN} += " \
     ${@'boot2qt-demolauncher' if bb.utils.to_boolean(d.getVar('USE_QT_DEMO_LAUNCHER')) else ''} \
     boot2qt-appcontroller \
