@@ -29,6 +29,7 @@
 
 DEPLOY_CONF_NAME:jetson-agx-xavier-devkit = "NVIDIA Jetson AGX Xavier Developer Kit"
 DEPLOY_CONF_NAME:jetson-agx-orin-devkit = "NVIDIA Jetson AGX Orin Developer Kit"
+DEPLOY_CONF_NAME:jetson-orin-nano-devkit = "NVIDIA Jetson Orin Nano Developer Kit"
 
 # Attach unsigned kernel image and dtb into boot folder of rootfs
 MACHINE_EXTRA_RRECOMMENDS:append = " kernel-devicetree"
