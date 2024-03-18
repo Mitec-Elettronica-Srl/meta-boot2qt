@@ -5,17 +5,17 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="babd5fea4a61d722b505e9efeb1701a70b4b5413"
-           upstream="master"
+           revision="1e4de6edc6fd644d375ad8c402af08fda4c26a65"
+           upstream="scarthgap"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="ed272245bf1c131c42b122852334b5ce6c4b28c0"
-           upstream="master"
+           revision="acbba477893ef87388effc4679b7f40ee49fc852"
+           upstream="scarthgap"
            path="sources/meta-mingw"/>
   <project name="meta-virtualization"
            remote="yocto"
-           revision="bd67612b66412754b092f336345470dfeda83c29"
+           revision="7a3b0b7ae1ac1a721369ee3f7a73b40b73510099"
            upstream="master"
            path="sources/meta-virtualization" />
 
@@ -24,8 +24,8 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="065d6496e4af178e5b1f8e4e3c5f17ac587717a6"
-           upstream="master"
+           revision="a8310f7f31acdf273a3f51a75c74cc957375426e"
+           upstream="scarthgap"
            path="sources/meta-openembedded"/>
 
   <!-- Qt -->
@@ -45,19 +45,19 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="765609b34cd8f4d027ac6c32a971ae297d1289e8"
+           revision="611ff29235fdfadd797a07a038ebacad48e996c7"
            upstream="master"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision= "baa33812b28d52c9032cbee99eb97c54ae6b6a96"
+           revision= "ae392bf4c9b9499234cb4a3411624a4177237af2"
            upstream="master"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="e67feeff489a91393cc3d00442509010f52ce3ee"
+           revision="1cf3dd5e5ef86c5196c8544853857ab1561c748b"
            upstream="master"
            path="sources/meta-raspberrypi"/>
 
@@ -66,7 +66,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="fa6a3ad97ba8a9a6666fc49c6736758504fdb5f8"
+           revision="9ce6cc89c7a6c6de1b26356c1c14559571cf28a5"
            upstream="master"
            path="sources/meta-intel"/>
 
@@ -75,7 +75,7 @@
           fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
-           revision="11b401397f79438f27caa38727f9a28914319e19"
+           revision="5282a09e3cfb741f1827ce0f5b05768967191e11"
            upstream="master"
            path="sources/meta-tegra"/>
 </manifest>
