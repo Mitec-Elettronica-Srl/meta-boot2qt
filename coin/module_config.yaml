@@ -25,7 +25,7 @@ environment: &environment
         equals_value: TARGET1
     - type: EnvironmentVariable
       variableName: MACHINE
-      variableValue: imx8mm-lpddr4-evk
+      variableValue: imx93-11x11-lpddr4x-evk
       enable_if:
         condition: property
         property: target.arch
