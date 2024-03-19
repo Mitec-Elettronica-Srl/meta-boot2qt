@@ -41,13 +41,13 @@ do_install:append() {
 
 PACKAGES += "\
     initramfs-module-rtsx-pci-sdmmc \
-    initramfs-module-r8169 \
+    initramfs-module-network \
     "
 
 SUMMARY:initramfs-module-rtsx-pci-sdmmc = "initramfs support for rtsx_pci_sdmmc"
 RDEPENDS:initramfs-module-rtsx-pci-sdmmc = "${PN}-base"
 FILES:initramfs-module-rtsx-pci-sdmmc = "/init.d/20-rtsx_pci_sdmmc"
 
-SUMMARY:initramfs-module-r8169 = "initramfs support for Realtek LAN driver"
-RDEPENDS:initramfs-module-r8169 = "${PN}-base"
-FILES:initramfs-module-r8169 = "/init.d/30-network"
+SUMMARY:initramfs-module-network = "initramfs support for Realtek LAN driver and Intel(R) Ethernet Controller I225-LM/I225-V"
+RDEPENDS:initramfs-module-network = "${PN}-base"
+FILES:initramfs-module-network = "/init.d/30-network"
