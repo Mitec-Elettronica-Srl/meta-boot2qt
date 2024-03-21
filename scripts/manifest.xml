@@ -28,6 +28,15 @@
            upstream="scarthgap"
            path="sources/meta-openembedded"/>
 
+  <!-- Clang -->
+  <remote name="kraj"
+          fetch="https://github.com/kraj"/>
+  <project name="meta-clang"
+           remote="kraj"
+           revision="81e5f4eef93b5e1d6507daaf74fce28a2ccd7cf7"
+           upstream="master"
+           path="sources/meta-clang"/>
+
   <!-- Qt -->
   <remote name="qt"
           fetch="git://code.qt.io/yocto"
