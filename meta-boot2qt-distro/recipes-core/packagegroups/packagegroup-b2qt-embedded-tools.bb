@@ -49,7 +49,6 @@ RDEPENDS:${PN} = "\
         iproute2 \
         ldd \
         mtd-utils \
-        openssh-sftp-server \
         parted \
         procps \
         rsync \

@@ -42,7 +42,6 @@ SRCREV = "3e0ecc85628f17e4d7929f3341aa76b376b8080e"
 DEPENDS = "qtbase"
 RDEPENDS:${PN} = " \
     default-qt-envs \
-    dbus-session \
     "
 
 do_configure:append() {

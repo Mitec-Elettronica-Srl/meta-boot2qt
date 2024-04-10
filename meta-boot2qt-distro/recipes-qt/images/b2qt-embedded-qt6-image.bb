@@ -35,7 +35,7 @@ DEPLOY_CONF_TYPE = "Boot2Qt ${QT_VERSION}"
 
 IMAGE_FEATURES += "\
         package-management \
-        ssh-server-dropbear \
+        ssh-server-openssh \
         tools-debug \
         tools-profile \
         debug-tweaks \
