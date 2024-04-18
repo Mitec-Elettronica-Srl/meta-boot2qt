@@ -5,7 +5,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="1e4de6edc6fd644d375ad8c402af08fda4c26a65"
+           revision="5b727a8fa1acfa9eeb441ac835ca7d24099284a9"
            upstream="scarthgap"
            path="sources/poky"/>
   <project name="meta-mingw"
@@ -15,8 +15,8 @@
            path="sources/meta-mingw"/>
   <project name="meta-virtualization"
            remote="yocto"
-           revision="7a3b0b7ae1ac1a721369ee3f7a73b40b73510099"
-           upstream="master"
+           revision="b7e77b69d309d8ee985720e88b19b6e9cf03fe63"
+           upstream="scarthgap"
            path="sources/meta-virtualization" />
 
   <!-- OpenEmbedded -->
@@ -24,7 +24,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="a8310f7f31acdf273a3f51a75c74cc957375426e"
+           revision="1731d7ca9c75039040f8ce98009c2761707a9671"
            upstream="scarthgap"
            path="sources/meta-openembedded"/>
 
@@ -54,13 +54,13 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="611ff29235fdfadd797a07a038ebacad48e996c7"
-           upstream="master"
+           revision="883ac36a4c027049aca32d46690b03a7aa65a6cc"
+           upstream="scarthgap"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision= "ae392bf4c9b9499234cb4a3411624a4177237af2"
-           upstream="master"
+           revision="8b61684f0b1ba8bacdf3a69d993445e9791d4932"
+           upstream="scarthgap"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
@@ -75,8 +75,8 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="9ce6cc89c7a6c6de1b26356c1c14559571cf28a5"
-           upstream="master"
+           revision="0093d9f2eaf97063c81bc73736ebe7c29a69200f"
+           upstream="scarthgap"
            path="sources/meta-intel"/>
 
   <!-- NVIDIA -->
