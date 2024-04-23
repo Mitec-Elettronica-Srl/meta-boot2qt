@@ -27,8 +27,21 @@
 ##
 ############################################################################
 
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://kms.conf"
+
 do_configure:append() {
     echo "QT_QPA_EGLFS_FORCE888=1" >> ${WORKDIR}/defaults
     echo "QT_QPA_EGLFS_KMS_ATOMIC=0" >> ${WORKDIR}/defaults
     echo "QT_WAYLAND_HARDWARE_INTEGRATION=linux-dmabuf-unstable-v1" >> ${WORKDIR}/defaults
 }
+
+do_configure:append:raspberrypi5() {
+    echo "QT_QPA_EGLFS_KMS_CONFIG=/etc/kms.conf" >> ${WORKDIR}/defaults
+}
+
+do_install:append:raspberrypi5() {
+    install -m 0644 ${WORKDIR}/kms.conf ${D}${sysconfdir}/
+}
+

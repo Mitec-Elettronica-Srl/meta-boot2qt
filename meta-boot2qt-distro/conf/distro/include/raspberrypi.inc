@@ -33,6 +33,7 @@ DEPLOY_CONF_NAME:raspberrypi2 = "Raspberry Pi 2"
 DEPLOY_CONF_NAME:raspberrypi3 = "Raspberry Pi 3"
 DEPLOY_CONF_NAME:raspberrypi4 = "Raspberry Pi 4"
 DEPLOY_CONF_NAME:raspberrypi4-64 = "Raspberry Pi 4 64-bit"
+DEPLOY_CONF_NAME:raspberrypi5 = "Raspberry Pi 5"
 
 IMAGE_FSTYPES += "wic.xz"
 
