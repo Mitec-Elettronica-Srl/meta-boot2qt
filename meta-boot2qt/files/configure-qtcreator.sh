@@ -36,7 +36,7 @@ MACHINE=""
 
 printUsage ()
 {
-    echo "Usage: $0 --config <environment-setup-file> [--remove] [--qtcreator <path>] [--name <basename>]"
+    echo "Usage: $0 --config <environment-setup-file> [--remove] --sdktool <path>] [--name <basename>]"
 }
 
 while test -n "$1"; do
@@ -44,9 +44,9 @@ while test -n "$1"; do
     "--remove")
       REMOVEONLY=1
       ;;
-    "--qtcreator")
+    "--sdktool")
       shift
-      QTCREATOR=$1
+      SDKTOOL=$1
       ;;
     "--config")
       shift
@@ -69,13 +69,11 @@ if [ ! -f "$CONFIG" ]; then
    exit 1
 fi
 
-if [ -z "${QTCREATOR}" ]; then
-    SDKTOOL="${HOME}/Qt/Tools/QtCreator/libexec/qtcreator/sdktool"
-else
-    SDKTOOL="${QTCREATOR}/libexec/qtcreator/sdktool"
+if [ -z "${SDKTOOL}" ]; then
+    SDKTOOL="${HOME}/Qt/Tools/sdktool/libexec/qtcreator/sdktool"
 fi
 if [ ! -x ${SDKTOOL} ]; then
-    echo "Cannot find 'sdktool' from QtCreator"
+    echo "Cannot find 'sdktool'"
     printUsage
     exit 1
 fi
