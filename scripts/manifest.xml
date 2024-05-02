@@ -5,12 +5,12 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="5b727a8fa1acfa9eeb441ac835ca7d24099284a9"
+           revision="refs/tags/yocto-5.0"
            upstream="scarthgap"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="acbba477893ef87388effc4679b7f40ee49fc852"
+           revision="refs/tags/yocto-5.0"
            upstream="scarthgap"
            path="sources/meta-mingw"/>
   <project name="meta-virtualization"
@@ -24,7 +24,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="1731d7ca9c75039040f8ce98009c2761707a9671"
+           revision="6819f825caf750b4deac5d8dda1b81f3380615be"
            upstream="scarthgap"
            path="sources/meta-openembedded"/>
 
