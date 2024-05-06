@@ -42,6 +42,7 @@ QT_GIT_PROTOCOL = "http"
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE = "boot2qt-launcher"
 QT_MODULE_BRANCH = "dev"
+CVE_PRODUCT = "${BPN}"
 
 SRC_URI += " \
     ${QT_GIT}/qt-apps/boot2qt-demos.git;name=metadata;branch=dev;protocol=${QT_GIT_PROTOCOL};destsuffix=git/metadata \

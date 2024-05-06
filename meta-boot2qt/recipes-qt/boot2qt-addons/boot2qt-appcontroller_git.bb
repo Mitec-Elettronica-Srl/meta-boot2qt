@@ -36,6 +36,7 @@ require recipes-qt/qt6/qt6-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE_BRANCH = "dev"
+CVE_PRODUCT = "${BPN}"
 
 SRCREV = "3e0ecc85628f17e4d7929f3341aa76b376b8080e"
 

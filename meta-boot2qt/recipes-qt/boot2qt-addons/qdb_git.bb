@@ -38,6 +38,7 @@ require recipes-qt/qt6/qt6-git.inc
 
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE_BRANCH = "master"
+CVE_PRODUCT = "${BPN}"
 
 SRC_URI += "\
     file://b2qt-gadget-network.sh \

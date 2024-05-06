@@ -39,6 +39,7 @@ QT_GIT_PROTOCOL = "http"
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE = "boot2qt-demos"
 QT_MODULE_BRANCH = "dev"
+CVE_PRODUCT = "${BPN}"
 
 SRC_URI += "\
     file://startupscreen.service \
