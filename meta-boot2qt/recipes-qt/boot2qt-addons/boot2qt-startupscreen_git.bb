@@ -34,8 +34,6 @@ LIC_FILES_CHKSUM = "file://main.cpp;md5=5c11ee2d9fe17c24e80b866d1b758458;beginli
 inherit qt6-cmake systemd
 require recipes-qt/qt6/qt6-git.inc
 
-QT_GIT = "git://codereview.qt-project.org"
-QT_GIT_PROTOCOL = "http"
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE = "boot2qt-demos"
 QT_MODULE_BRANCH = "dev"
