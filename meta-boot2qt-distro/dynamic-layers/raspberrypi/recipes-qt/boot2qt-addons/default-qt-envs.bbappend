@@ -1,6 +1,6 @@
 ############################################################################
 ##
-## Copyright (C) 2019 The Qt Company Ltd.
+## Copyright (C) 2024 The Qt Company Ltd.
 ## Contact: https://www.qt.io/licensing/
 ##
 ## This file is part of the Boot to Qt meta layer.
@@ -37,11 +37,10 @@ do_configure:append() {
     echo "QT_WAYLAND_HARDWARE_INTEGRATION=linux-dmabuf-unstable-v1" >> ${WORKDIR}/defaults
 }
 
-do_configure:append:raspberrypi5() {
+do_configure:append() {
     echo "QT_QPA_EGLFS_KMS_CONFIG=/etc/kms.conf" >> ${WORKDIR}/defaults
 }
 
-do_install:append:raspberrypi5() {
+do_install:append() {
     install -m 0644 ${WORKDIR}/kms.conf ${D}${sysconfdir}/
 }
-

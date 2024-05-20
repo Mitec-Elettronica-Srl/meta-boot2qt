@@ -34,6 +34,7 @@ DEPLOY_CONF_NAME:raspberrypi3 = "Raspberry Pi 3"
 DEPLOY_CONF_NAME:raspberrypi4 = "Raspberry Pi 4"
 DEPLOY_CONF_NAME:raspberrypi4-64 = "Raspberry Pi 4 64-bit"
 DEPLOY_CONF_NAME:raspberrypi5 = "Raspberry Pi 5"
+DEPLOY_CONF_NAME:raspberrypi-armv8 ="Raspberry Pi Development Boards (64bit)"
 
 IMAGE_FSTYPES += "wic.xz"
 
@@ -62,7 +63,7 @@ dtparam=audio=on \n\
 "
 
 # enable device mode from usb-c
-ENABLE_DWC2_PERIPHERAL:raspberrypi4 = "1"
+ENABLE_DWC2_PERIPHERAL = "1"
 
 # additional memory for GPU
 GPU_MEM_256 = "128"
