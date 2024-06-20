@@ -1,5 +1,6 @@
 
 PACKAGECONFIG += " \
+    ctf \
     cups \
     glib \
     sql-sqlite \
