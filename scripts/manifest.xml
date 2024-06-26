@@ -5,17 +5,17 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="refs/tags/yocto-5.0"
+           revision="refs/tags/yocto-5.0.1"
            upstream="scarthgap"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="refs/tags/yocto-5.0"
+           revision="refs/tags/yocto-5.0.1"
            upstream="scarthgap"
            path="sources/meta-mingw"/>
   <project name="meta-virtualization"
            remote="yocto"
-           revision="b7e77b69d309d8ee985720e88b19b6e9cf03fe63"
+           revision="37c06acf58f9020bccfc61954eeefe160642d5f3"
            upstream="scarthgap"
            path="sources/meta-virtualization" />
 
@@ -24,7 +24,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="6819f825caf750b4deac5d8dda1b81f3380615be"
+           revision="4a7bb77f7ebe0ac8be5bab5103d8bd993e17e18d"
            upstream="scarthgap"
            path="sources/meta-openembedded"/>
 
@@ -33,8 +33,8 @@
           fetch="https://github.com/kraj"/>
   <project name="meta-clang"
            remote="kraj"
-           revision="989ff6a4e7db59f01d511727135610006124ead2"
-           upstream="master"
+           revision="e7dceb1c92caf7f21ef1d7b49c85328c30cffd90"
+           upstream="scarthgap"
            path="sources/meta-clang"/>
 
   <!-- Qt -->
