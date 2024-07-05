@@ -49,7 +49,7 @@ SRC_URI += " \
 
 SRCREV = "c1919571254d9191de9576bcb35e663d4efc0e9e"
 SRCREV_FORMAT = "${QT_MODULE}"
-SRCREV_metadata = "28042f4e7cb7ade04e032499e77d4fa49c679fa8"
+SRCREV_metadata = "2262f73e6479f5c2aae34e4bc82362acc5631749"
 
 DEPENDS += "qtbase qtdeclarative qtdeclarative-native qtwayland qtwayland-native"
 RDEPENDS:${PN} += "qtdoc-examples"
