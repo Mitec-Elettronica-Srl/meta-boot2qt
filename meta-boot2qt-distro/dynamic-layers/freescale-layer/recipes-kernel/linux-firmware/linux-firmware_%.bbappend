@@ -32,3 +32,8 @@ do_install:append:imx8qm-mek() {
     rm -f ${D}${nonarch_base_libdir}/firmware/amphion/vpu/vpu_fw_imx8_dec.bin
     rm -f ${D}${nonarch_base_libdir}/firmware/amphion/vpu/vpu_fw_imx8_enc.bin
 }
+
+do_install:append:imx8qxp-mek() {
+    rm -f ${D}${nonarch_base_libdir}/firmware/amphion/vpu/vpu_fw_imx8_dec.bin
+    rm -f ${D}${nonarch_base_libdir}/firmware/amphion/vpu/vpu_fw_imx8_enc.bin
+}
