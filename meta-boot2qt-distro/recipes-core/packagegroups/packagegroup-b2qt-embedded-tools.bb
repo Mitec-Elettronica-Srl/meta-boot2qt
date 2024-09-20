@@ -53,5 +53,6 @@ RDEPENDS:${PN} = "\
         procps \
         rsync \
         tslib-calibrate \
+        sysstat \
         ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
         "
