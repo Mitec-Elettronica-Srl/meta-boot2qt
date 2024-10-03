@@ -41,7 +41,7 @@ cat > ${WORKDIR}/python_win << EOF
 #! /bin/sh
 case "\$2" in
         --includes) echo "-I${STAGING_INCDIR}/${PYTHON_DIR}" ;;
-        --ldflags) echo "-Wl,-rpath-link,${STAGING_LIBDIR}/.. -lpython35" ;;
+        --ldflags) echo "-Wl,-rpath-link,${STAGING_LIBDIR}/.. -lpython312" ;;
         --exec-prefix) echo "${exec_prefix}" ;;
         *) exit 1 ;;
 esac
@@ -51,8 +51,9 @@ EOF
 }
 
 do_install:append:sdkmingw32() {
-    ln -s ../python35.dll ${D}${bindir}/
-    ln -s ../python35.zip ${D}${bindir}/
+    ln -s ../python3.dll ${D}${bindir}/
+    ln -s ../python312.dll ${D}${bindir}/
+    ln -s ../python312.zip ${D}${bindir}/
     ln -s ../libexpat-1.dll ${D}${bindir}/
     ln -s ../libiconv-2.dll ${D}${bindir}/
     ln -s ../libintl-8.dll ${D}${bindir}/
