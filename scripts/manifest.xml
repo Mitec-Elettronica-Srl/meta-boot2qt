@@ -5,17 +5,17 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="refs/tags/yocto-5.0.2"
+           revision="refs/tags/yocto-5.0.4"
            upstream="scarthgap"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="refs/tags/yocto-5.0.2"
+           revision="refs/tags/yocto-5.0.4"
            upstream="scarthgap"
            path="sources/meta-mingw"/>
   <project name="meta-virtualization"
            remote="yocto"
-           revision="37c06acf58f9020bccfc61954eeefe160642d5f3"
+           revision="6f3c1d8f90947408a6587be222fec575a1ca5195"
            upstream="scarthgap"
            path="sources/meta-virtualization" />
 
@@ -24,7 +24,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="2338409efc51cf2022ff5610a9fb689251706e2b"
+           revision="72018ca1b1a471226917e8246e8bbf9a374ccf97"
            upstream="scarthgap"
            path="sources/meta-openembedded"/>
 
@@ -33,7 +33,7 @@
           fetch="https://github.com/kraj"/>
   <project name="meta-clang"
            remote="kraj"
-           revision="e7dceb1c92caf7f21ef1d7b49c85328c30cffd90"
+           revision="2b7433611d80f6d0ee1b04156fa91fc73d3c2665"
            upstream="scarthgap"
            path="sources/meta-clang"/>
 
@@ -54,19 +54,19 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="1444416aeb875d5b62008aaf31a5cb6b596cc41a"
+           revision="055c801b58bb9fb9e97f17eea39daddaf9621e5c"
            upstream="scarthgap"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="8b61684f0b1ba8bacdf3a69d993445e9791d4932"
+           revision="6c063450d464eb2f380443c7d9af1b94ce9b9d75"
            upstream="scarthgap"
            path="sources/meta-freescale-3rdparty"/>
 
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="1918a27419dcd5e79954c0dc0edddcde91057a7e"
+           revision="6df7e028a2b7b2d8cab0745dc0ed2eebc3742a17"
            upstream="scarthgap"
            path="sources/meta-raspberrypi"/>
 
@@ -75,7 +75,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="d172a00f487a8ea4391b96e0f6cef5279c5a07d7"
+           revision="c2bc8e27e9cc83654a23e8d89525fd9b1e781eb6"
            upstream="scarthgap"
            path="sources/meta-intel"/>
 
