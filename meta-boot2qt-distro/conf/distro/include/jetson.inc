@@ -1,7 +1,6 @@
 # Copyright (C) 2024 The Qt Company Ltd.
 # SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 
-DEPLOY_CONF_NAME:jetson-agx-xavier-devkit = "NVIDIA Jetson AGX Xavier Developer Kit"
 DEPLOY_CONF_NAME:jetson-agx-orin-devkit = "NVIDIA Jetson AGX Orin Developer Kit"
 DEPLOY_CONF_NAME:jetson-orin-nano-devkit = "NVIDIA Jetson Orin Nano Developer Kit"
 
@@ -19,3 +18,6 @@ DISTRO_FEATURES:remove = "vulkan"
 
 NVIDIA_DEVNET_MIRROR ?= "file://${BSPDIR}/sources/nvidia-devnet-mirror"
 NVIDIA_DEVNET_MIRROR[vardepsexclude] = "BSPDIR"
+
+# meta-tegra doesn't have styhead branch yet
+BBMASK = "meta-tegra/external/openembedded-layer/recipes-support/opencv/opencv_4.10.%.bbappend"

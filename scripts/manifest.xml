@@ -84,7 +84,7 @@
           fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
-           revision="3683a5aae81f73d26e354eae16fea1830cbb642e"
-           upstream="scarthgap-l4t-r35.x"
+           revision="8f9748b0178a4d93bceffd86d9d436cd0e685750"
+           upstream="scarthgap"
            path="sources/meta-tegra"/>
 </manifest>
