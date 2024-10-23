@@ -47,8 +47,8 @@ SRC_URI += "\
     file://qdbd-init.sh \
 "
 
-SRCREV = "937877d9f73e37655228b0b01ffcc60761bd0c2f"
-PV = "1.3.0+git${SRCPV}"
+SRCREV = "c68a9483d809c277a8190982206380c40199d413"
+PV = "1.3.2+git${SRCPV}"
 
 REQUIRED_DISTRO_FEATURES = "systemd"
 DEPENDS = "qtbase qtdeclarative qtdeclarative-native"
