@@ -54,7 +54,7 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="055c801b58bb9fb9e97f17eea39daddaf9621e5c"
+           revision="858dfbc452536ede4ca370f40fddb1ef7ced797f"
            upstream="scarthgap"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
