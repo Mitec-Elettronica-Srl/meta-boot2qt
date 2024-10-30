@@ -41,3 +41,14 @@ SRC_URI += "\
     file://0001-video-logo-Drop-full-path-of-the-input-filename-in-g.patch \
     file://tracing.cfg \
 "
+
+DEPENDS += " bpftool-native "
+
+do_install:append() {
+    bpftool btf dump file ${D}/${KERNEL_IMAGEDEST}/vmlinux-${KERNEL_VERSION} format c | tee ${B}/vmlinux.h 1> /dev/null
+    install -d ${D}${includedir}
+    install -m 0644 ${B}/vmlinux.h ${D}${includedir}/
+}
+
+PACKAGES += "linux-bpf-dev"
+FILES:linux-bpf-dev = "${includedir}/vmlinux.h"
