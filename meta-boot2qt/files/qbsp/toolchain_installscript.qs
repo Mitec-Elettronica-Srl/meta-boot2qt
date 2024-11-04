@@ -82,7 +82,7 @@ Component.prototype.createOperations = function()
 
         component.addOperation("AppendFile", path + "/Dockerfile",
             "\
-FROM --platform=linux/@DOCKER_ARCH@ ubuntu:22.04\n\
+FROM --platform=linux/@DOCKER_ARCH@ ubuntu:24.04\n\
 ENV LANG C.UTF-8\n\
 RUN apt-get update && DEBIAN_FRONTEND=\"noninteractive\" apt-get install -y --no-install-recommends python3 xz-utils file make clangd && rm -rf /var/lib/apt/lists/*\n\
 COPY *.sh /\n\
