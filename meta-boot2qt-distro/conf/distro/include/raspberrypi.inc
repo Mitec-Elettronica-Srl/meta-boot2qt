@@ -72,6 +72,9 @@ GPU_MEM_1024= "256"
 
 MACHINE_FEATURES += "pitft"
 
+# hdmi output without blackbars
+DISABLE_OVERSCAN = "1"
+
 MACHINE_GSTREAMER_1_0_PLUGIN += "gstreamer1.0-omx"
 
 RPI_KERNEL_DEVICETREE_OVERLAYS = "\
