@@ -37,7 +37,6 @@ MACHINE_EXTRA_INSTALL ?= ""
 
 RDEPENDS:${PN} = "\
         kernel-modules \
-        linux-firmware \
         ca-certificates \
         liberation-fonts \
         ttf-devanagari \
