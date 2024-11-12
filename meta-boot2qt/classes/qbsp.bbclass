@@ -74,10 +74,11 @@ RELEASEDATE = "${@time.strftime('%Y-%m-%d',time.gmtime())}"
 # overwrite IMAGE_BASENAME so that IMAGE_LINK_NAME still works as expected
 IMAGE_BASENAME = "${QBSP_IMAGE_TASK}"
 
-SDK_NAME = "${DISTRO}-${SDK_MACHINE}-${QBSP_SDK_TASK}-${MACHINE}.${SDK_POSTFIX}"
-SDK_POSTFIX = "sh"
-SDK_POSTFIX:sdkmingw32 = "tar.xz"
-
+QBSP_SDK ??= "${DISTRO}-${TCLIBC}-${SDKMACHINE}-${QBSP_SDK_TASK}-${TUNE_PKGARCH}-${MACHINE}-toolchain-${SDK_VERSION}"
+QBSP_SDK:b2qt ?= "${DISTRO}-${SDK_MACHINE}-${QBSP_SDK_TASK}-${MACHINE}"
+QBSP_SDK:append = "${SDK_POSTFIX}"
+SDK_POSTFIX = ".sh"
+SDK_POSTFIX:sdkmingw32 = ".tar.xz"
 REAL_MULTIMACH_TARGET_SYS = "${TUNE_PKGARCH}${TARGET_VENDOR}-${TARGET_OS}"
 SDK_MACHINE = "${@d.getVar('SDKMACHINE') or '${SDK_ARCH}'}"
 SDK_DEPLOY ?= "${DEPLOY_DIR}/sdk"
@@ -101,7 +102,7 @@ patch_installer_files() {
         -e "s#@BITS@#${SITEINFO_BITS}#" \
         -e "s#@INSTALLPATH@#${QBSP_INSTALL_PATH}#" \
         -e "s#@SDKPATH@#${SDKPATH}#" \
-        -e "s#@SDKFILE@#${SDK_NAME}#" \
+        -e "s#@SDKFILE@#${QBSP_SDK}#" \
         -e "s#@LICENSEDEPENDENCY@#${LICENSE_DEPENDENCY}#" \
         -e "s#@LICENSEFILE@#$(basename ${QBSP_LICENSE_FILE})#" \
         -e "s#@LICENSENAME@#${QBSP_LICENSE_NAME}#" \
@@ -116,7 +117,7 @@ patch_installer_files() {
 
 prepare_qbsp() {
     # Toolchain component
-    if [ -e ${SDK_DEPLOY}/${SDK_NAME} ]; then
+    if [ -e ${SDK_DEPLOY}/${QBSP_SDK} ]; then
         COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.toolchain"
         mkdir -p ${COMPONENT_PATH}/meta
         mkdir -p ${COMPONENT_PATH}/data
@@ -126,9 +127,9 @@ prepare_qbsp() {
         patch_installer_files ${COMPONENT_PATH}/meta
 
         if [ "${SDK_POSTFIX}" = "${SDK_POSTFIX:sdkmingw32}" ]; then
-            cp ${SDK_DEPLOY}/${SDK_NAME} ${COMPONENT_PATH}/data/toolchain.${SDK_POSTFIX}
+            cp ${SDK_DEPLOY}/${QBSP_SDK} ${COMPONENT_PATH}/data/toolchain${SDK_POSTFIX}
         else
-            7za a -mx=0 ${COMPONENT_PATH}/data/toolchain.7z ${SDK_DEPLOY}/${SDK_NAME}
+            7za a -mx=0 ${COMPONENT_PATH}/data/toolchain.7z ${SDK_DEPLOY}/${QBSP_SDK}
         fi
     fi
 
