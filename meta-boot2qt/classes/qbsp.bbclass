@@ -46,7 +46,11 @@ do_qbsp[depends] += "\
     installer-framework-native:do_populate_sysroot \
     ${@d.getVar('QBSP_SDK_TASK', True) + ':do_populate_sdk' if d.getVar('QBSP_SDK_TASK', True) else ''}  \
     ${@d.getVar('QBSP_IMAGE_TASK', True) + ':do_image_complete' if d.getVar('QBSP_IMAGE_TASK', True) else ''}  \
-    "
+    ${QBSP_IMAGE_DEPENDS} \
+"
+
+QBSP_IMAGE_CONTENT ??= ""
+QBSP_IMAGE_DEPENDS ??= ""
 
 QBSP_VERSION ?= "${PV}${VERSION_AUTO_INCREMENT}"
 QBSP_INSTALLER_COMPONENT ?= "${@d.getVar('MACHINE').replace('-','')}"
@@ -67,10 +71,13 @@ VERSION_AUTO_INCREMENT[vardepsexclude] = "DATETIME"
 DEPLOY_CONF_NAME ?= "${MACHINE}"
 RELEASEDATE = "${@time.strftime('%Y-%m-%d',time.gmtime())}"
 
-IMAGE_PACKAGE = "${QBSP_IMAGE_TASK}${IMAGE_MACHINE_SUFFIX}${IMAGE_NAME_SUFFIX}.7z"
+# overwrite IMAGE_BASENAME so that IMAGE_LINK_NAME still works as expected
+IMAGE_BASENAME = "${QBSP_IMAGE_TASK}"
+
 SDK_NAME = "${DISTRO}-${SDK_MACHINE}-${QBSP_SDK_TASK}-${MACHINE}.${SDK_POSTFIX}"
 SDK_POSTFIX = "sh"
 SDK_POSTFIX:sdkmingw32 = "tar.xz"
+
 REAL_MULTIMACH_TARGET_SYS = "${TUNE_PKGARCH}${TARGET_VENDOR}-${TARGET_OS}"
 SDK_MACHINE = "${@d.getVar('SDKMACHINE') or '${SDK_ARCH}'}"
 SDK_DEPLOY ?= "${DEPLOY_DIR}/sdk"
@@ -125,8 +132,8 @@ prepare_qbsp() {
         fi
     fi
 
-    # Image component, only if we have the qbsp-image
-    if [ -e ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} ]; then
+    # Image component, only if we have image content
+    if [ -n "${QBSP_IMAGE_CONTENT}" ]; then
         COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.system"
         mkdir -p ${COMPONENT_PATH}/meta
         mkdir -p ${COMPONENT_PATH}/data
@@ -134,7 +141,24 @@ prepare_qbsp() {
         cp ${WORKDIR}/image_package.xml ${COMPONENT_PATH}/meta/package.xml
         patch_installer_files ${COMPONENT_PATH}/meta
 
-        cp ${DEPLOY_DIR_IMAGE}/${IMAGE_PACKAGE} ${COMPONENT_PATH}/data/image.7z
+        mkdir -p ${B}/qbsp-image
+        for item in ${QBSP_IMAGE_CONTENT}; do
+            src=`echo $item | awk -F':' '{ print $1 }'`
+            dst=`echo $item | awk -F':' '{ print $2 }'`
+
+            if [ -d "$src" ]; then
+                mkdir -p ${B}/qbsp-image/$dst
+                cp -r $src/* ${B}/qbsp-image/$dst
+            elif [ -e "${DEPLOY_DIR_IMAGE}/$src" ]; then
+                install -D -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${B}/qbsp-image/$dst
+            else
+                echo "Could not copy file $src"
+                exit 1
+            fi
+        done
+
+        cd ${B}/qbsp-image
+        7za a ${COMPONENT_PATH}/data/image.7z .
     fi
 
     # License component

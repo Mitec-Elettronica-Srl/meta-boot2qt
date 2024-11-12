@@ -42,7 +42,7 @@ IMAGE_FEATURES += "\
         hwcodecs \
         "
 
-inherit core-image qbsp-image deploy-buildinfo
+inherit core-image deploy-buildinfo
 inherit consistent_timestamps
 
 # add some extra space to the device images
