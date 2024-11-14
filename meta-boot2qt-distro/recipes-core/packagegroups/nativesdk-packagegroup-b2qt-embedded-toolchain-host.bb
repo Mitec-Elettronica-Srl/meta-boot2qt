@@ -39,4 +39,5 @@ MACHINE_EXTRA_INSTALL_SDK_HOST ?= ""
 RDEPENDS:${PN} = "\
     ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
     nativesdk-gperf \
+    nativesdk-python3-spdx-tools \
     "

@@ -49,6 +49,7 @@ SRC_URI:append = "\
     https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl;name=colorama \
     https://files.pythonhosted.org/packages/6c/dd/a834df6482147d48e225a49515aabc28974ad5a4ca3215c18a882565b028/html5lib-1.1-py2.py3-none-any.whl;name=html5lib \
     https://files.pythonhosted.org/packages/a0/b9/1906bfeb30f2fc13bb39bf7ddb8749784c05faadbd18a21cf141ba37bff2/setuptools_scm-8.1.0-py3-none-any.whl;name=setuptools-scm \
+    https://files.pythonhosted.org/packages/4f/60/c9fdd6bacad33ff9f6871f4f6e30e4d35ba9c91f2ff0847f0f7d27eb2b0c/spdx_tools-0.7.0rc0-py3-none-any.whl;name=spdx-tools \
 "
 SRC_URI[qface.sha256sum] = "e3f8b99ad311868ee9daa64ecc372a4116ed3c6f82f8952240b81db8770d523b"
 SRC_URI[antlr4_python3_runtime.sha256sum] = "fe3835eb8d33daece0e799090eda89719dbccee7aa39ef94eed3818cafa5a7e8"
@@ -61,6 +62,7 @@ SRC_URI[pytest.sha256sum] = "a6853c7375b2663155079443d2e45de913a911a11d669df02a5
 SRC_URI[colorama.sha256sum] = "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"
 SRC_URI[html5lib.sha256sum] = "0d78f8fde1c230e99fe37986a60526d7049ed4bf8a9fadbad5f00e22e58e041d"
 SRC_URI[setuptools-scm.sha256sum] = "897a3226a6fd4a6eb2f068745e49733261a21f70b1bb28fce0339feb978d9af3"
+SRC_URI[spdx-tools.sha256sum] = "cf950dc92e916a0097f3cef3aaa6632462d2e0312561244a3f7640d018749a01"
 
 inherit bin_package python3-dir nativesdk
 
@@ -87,6 +89,7 @@ PROVIDES += " \
     python3-pytest \
     python3-colorama \
     python3-html5lib \
+    python3-spdx-tools \
     "
 RPROVIDES:${PN} += "${PROVIDES}"
 
