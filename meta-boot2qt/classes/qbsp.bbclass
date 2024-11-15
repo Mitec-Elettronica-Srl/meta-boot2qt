@@ -83,6 +83,11 @@ REAL_MULTIMACH_TARGET_SYS = "${TUNE_PKGARCH}${TARGET_VENDOR}-${TARGET_OS}"
 SDK_MACHINE = "${@d.getVar('SDKMACHINE') or '${SDK_ARCH}'}"
 SDK_DEPLOY ?= "${DEPLOY_DIR}/sdk"
 
+QBSP_OS_TYPE ?= "GenericLinuxOsType"
+QBSP_OS_TYPE:b2qt ?= "QdbLinuxOsType"
+QBSP_QT_TYPE ?= "RemoteLinux.EmbeddedLinuxQt"
+QBSP_QT_TYPE:b2qt ?= "Qdb.EmbeddedLinuxQt"
+
 B = "${WORKDIR}/build"
 
 patch_installer_files() {
@@ -112,6 +117,8 @@ patch_installer_files() {
         -e "s#@DOCKER_ARCH@#${@'arm64' if d.getVar('SDKMACHINE') == 'aarch64' else 'amd64'}#" \
         -e "s#@VERSION@#${PV}#" \
         -e "s#@YOCTO@#${DISTRO_VERSION} (${DISTRO_CODENAME})#" \
+        -e "s#@QBSP_OS_TYPE@#${QBSP_OS_TYPE}#" \
+        -e "s#@QBSP_QT_TYPE@#${QBSP_QT_TYPE}#" \
         -i ${1}/*
 }
 
