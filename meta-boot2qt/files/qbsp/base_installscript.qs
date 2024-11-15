@@ -29,6 +29,10 @@
 
 function Component()
 {
+    // add dependency if the component is available
+    if (installer.componentByName("embedded.tools"))
+        component.addDependency("embedded.tools");
+
     if ("@TOOLCHAIN_HOST_TYPE@" == "windows" && systemInfo.kernelType !== "winnt") {
         component.enabled = false;
         component.setValue("Default", false);
