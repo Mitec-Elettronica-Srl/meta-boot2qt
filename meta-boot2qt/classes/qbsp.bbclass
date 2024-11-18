@@ -52,6 +52,7 @@ do_qbsp[depends] += "\
 QBSP_IMAGE_CONTENT ??= ""
 QBSP_IMAGE_DEPENDS ??= ""
 
+QBSP_OUTPUTNAME ?= "${PN}-${SDK_MACHINE}-${MACHINE}-${PV}"
 QBSP_VERSION ?= "${PV}${VERSION_AUTO_INCREMENT}"
 QBSP_INSTALLER_COMPONENT ?= "${@d.getVar('MACHINE').replace('-','')}"
 QBSP_INSTALL_PATH ?= "/Extras/${MACHINE}"
@@ -195,10 +196,10 @@ create_qbsp() {
     repogen -p ${B}/pkg ${B}/repository
 
     mkdir -p ${DEPLOY_DIR}/qbsp
-    rm -f ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}-${PV}.qbsp
+    rm -f ${DEPLOY_DIR}/qbsp/${QBSP_OUTPUTNAME}.qbsp
 
     cd ${B}/repository
-    7za a ${DEPLOY_DIR}/qbsp/${PN}-${SDK_MACHINE}-${MACHINE}-${PV}.qbsp *
+    7za a ${DEPLOY_DIR}/qbsp/${QBSP_OUTPUTNAME}.qbsp *
 }
 
 python do_qbsp() {
