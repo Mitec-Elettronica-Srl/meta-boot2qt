@@ -29,6 +29,9 @@
 
 inherit populate_sdk populate_sdk_qt6_base abi-arch siteinfo
 
+SDK_NAME = "${DISTRO}-${SDKMACHINE}-${IMAGE_BASENAME}"
+TOOLCHAIN_OUTPUTNAME = "${SDK_NAME}-${MACHINE}"
+
 create_sdk_files:append () {
 
     create_qtcreator_configure_script
