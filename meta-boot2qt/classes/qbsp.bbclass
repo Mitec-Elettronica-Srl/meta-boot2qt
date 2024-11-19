@@ -49,6 +49,8 @@ do_qbsp[depends] += "\
     ${QBSP_IMAGE_DEPENDS} \
 "
 
+QBSP_NAME ??= "Qt ${QT_VERSION}"
+
 QBSP_IMAGE_CONTENT ??= ""
 QBSP_IMAGE_DEPENDS ??= ""
 
