@@ -194,7 +194,7 @@ create_qbsp() {
     prepare_qbsp
 
     # Repository creation
-    repogen -p ${B}/pkg ${B}/repository
+    repogen --unite-metadata --af 7z --ac 0 -p ${B}/pkg ${B}/repository
 
     mkdir -p ${DEPLOY_DIR}/qbsp
     rm -f ${DEPLOY_DIR}/qbsp/${QBSP_OUTPUTNAME}.qbsp

@@ -35,16 +35,22 @@ inherit bin_package native
 
 do_unpack[depends] += "p7zip-native:do_populate_sysroot"
 
-SRC_URI = "https://download.qt.io/development_releases/installer-framework/${PV}/installer-framework-Linux-RHEL_7_4-GCC-Linux-RHEL_7_4-X86_64.7z"
+DEPENDS = "patchelf-native"
 
-SRC_URI[md5sum] = "8b87aef981dc7205d8574c486401a7c2"
-SRC_URI[sha256sum] = "212094b446bad04629045c08cb274eb7e9a4cc5c1ddd5c7c8fcbfe10af783e1b"
+PLATFORM = "Linux"
+PLATFORM:aarch64 = "Linux-AARCH64"
+SRC_URI = "https://download.qt.io/development_releases/installer-framework/${PV}/${PLATFORM}/ifw_data.7z;downloadfilename=ifw-${PLATFORM}.7z"
+
+CHECKSUM = "c918a0e4c02c7f4bddaaa28b7ca83966b796233f8b977e03b1e8e536a0caa694"
+CHECKSUM:aarch64 = "25476981d81e4ba7a252f488eb45bdb5765935566406d447f584e656d8115c6c"
+SRC_URI[sha256sum] = "${CHECKSUM}"
 
 S = "${WORKDIR}"
 
 do_install() {
     install -d ${D}${bindir}
     install -m 0755 -t ${D}${bindir} ${S}/bin/*
+    patchelf --set-rpath "\$ORIGIN/../lib" ${D}${bindir}/*
 }
 
 INSANE_SKIP:${PN} += "already-stripped"
