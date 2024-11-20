@@ -55,6 +55,7 @@ RDEPENDS:${PN} = "\
         rng-tools \
         udev-extraconf \
         kmsxx \
+        python3-pip \
         ${@bb.utils.contains("DISTRO_FEATURES", "wayland", "weston weston-init weston-examples", "", d)} \
         ${@bb.utils.contains("DISTRO_FEATURES", "pulseaudio", "pulseaudio-server pulseaudio-misc", "", d)} \
         ${MACHINE_EXTRA_INSTALL} \
