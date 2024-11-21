@@ -38,6 +38,14 @@ MACHINE_EXTRA_INSTALL_SDK_HOST ?= ""
 
 RDEPENDS:${PN} = "\
     ${MACHINE_EXTRA_INSTALL_SDK_HOST} \
+    nativesdk-cmake \
     nativesdk-gperf \
+    nativesdk-make \
+    nativesdk-ninja \
+    nativesdk-perl-modules \
     nativesdk-python3-spdx-tools \
+    "
+
+RDEPENDS:${PN}:remove:mingw32 = "\
+    nativesdk-perl-modules \
     "
