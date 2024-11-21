@@ -98,17 +98,10 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
     cp ${PWD}/sources/meta-boot2qt/meta-boot2qt-distro/conf/templates/default/local.conf.sample  ${PWD}/${BUILDDIRECTORY}/conf/local.conf
   fi
 
-  if [ -e ${PWD}/sources/meta-boot2qt/.QT-FOR-DEVICE-CREATION-LICENSE-AGREEMENT ]; then
-    QT_SDK_PATH=$(readlink -f ${PWD}/sources/meta-boot2qt/../../../../)
-  fi
 fi
 
 . sources/poky/oe-init-build-env ${BUILDDIRECTORY}
 
-# use sources from Qt SDK if that is available
-sed -i -e "/QT_SDK_PATH/s:\"\":\"${QT_SDK_PATH}\":" conf/local.conf
-
 unset BUILDDIRECTORY
-unset QT_SDK_PATH
 unset TEMPLATECONF
 unset LAYERSCONF
