@@ -62,6 +62,12 @@ fi
 
 BUILDDIRECTORY=${BUILDDIRECTORY:-build-${MACHINE}}
 
+TEMPLATECONF=$(readlink -f "${PWD}/sources/templates")
+if [ ! -e "${TEMPLATECONF}" ]; then
+  TEMPLATECONF=$(readlink -f "${PWD}/sources/meta-boot2qt/meta-boot2qt-distro/conf/templates/default")
+fi
+export TEMPLATECONF
+
 if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
   case ${MACHINE} in
     imx*)
@@ -80,7 +86,7 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
       LAYERSCONF="bblayers.conf.sample"
       ;;
   esac
-  LAYERSCONF=${PWD}/sources/templates/${LAYERSCONF}
+  LAYERSCONF=${TEMPLATECONF}/${LAYERSCONF}
   if [ ! -e ${LAYERSCONF} ]; then
     echo "Error: Could not find layer conf '${LAYERSCONF}'"
     return 1
@@ -88,7 +94,7 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
 
   mkdir -p ${PWD}/${BUILDDIRECTORY}/conf
   cp ${LAYERSCONF} ${PWD}/${BUILDDIRECTORY}/conf/bblayers.conf
-  if [ ! -e "${PWD}/sources/templates/local.conf.sample" ]; then
+  if [ ! -e "${TEMPLATECONF}/local.conf.sample" ]; then
     cp ${PWD}/sources/meta-boot2qt/meta-boot2qt-distro/conf/templates/default/local.conf.sample  ${PWD}/${BUILDDIRECTORY}/conf/local.conf
   fi
 
@@ -97,7 +103,6 @@ if [ ! -e ${PWD}/${BUILDDIRECTORY} ]; then
   fi
 fi
 
-export TEMPLATECONF=$(readlink -f "${PWD}/sources/templates")
 . sources/poky/oe-init-build-env ${BUILDDIRECTORY}
 
 # use sources from Qt SDK if that is available
