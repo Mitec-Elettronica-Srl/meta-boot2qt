@@ -39,10 +39,12 @@ IMAGE_BUILDINFO_VARS:append = "\
 
 TARGET_SYSROOT = "${REAL_MULTIMACH_TARGET_SYS}"
 
-python buildinfo_image:append () {
+python deploy_buildinfo () {
     import shutil
     shutil.copyfile(
         d.expand('${IMAGE_ROOTFS}${IMAGE_BUILDINFO_FILE}'),
         d.expand('${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.info')
     )
 }
+
+IMAGE_PREPROCESS_COMMAND += "deploy_buildinfo"
