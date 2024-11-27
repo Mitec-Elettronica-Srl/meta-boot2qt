@@ -54,12 +54,12 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="858dfbc452536ede4ca370f40fddb1ef7ced797f"
+           revision="d4c96eb34b0b0edc2905e3df5278e01cdb275416"
            upstream="scarthgap"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="6c063450d464eb2f380443c7d9af1b94ce9b9d75"
+           revision="2602df3c730d970b8a4aa685b9f43d7ccd2c5d0f"
            upstream="scarthgap"
            path="sources/meta-freescale-3rdparty"/>
 
