@@ -1,0 +1,36 @@
+From b7aadf198c0f0a92b5bc734e861ac00e14537082 Mon Sep 17 00:00:00 2001
+From: Samuli Piippo <samuli.piippo@qt.io>
+Date: Wed, 27 Nov 2024 10:58:51 +0000
+Subject: [PATCH] imx93: expand kernel image load space
+
+More space is needed for kernel image as DTB load address
+overlaps it.
+
+ERROR: FDT image overlaps OS image
+
+Upstream-Status: Inappropriate [distro specific]
+---
+ include/configs/imx93_evk.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/include/configs/imx93_evk.h b/include/configs/imx93_evk.h
+index 27313d272bd..152c04eda5d 100644
+--- a/include/configs/imx93_evk.h
++++ b/include/configs/imx93_evk.h
+@@ -65,13 +65,13 @@
+ 	AHAB_ENV \
+ 	SR_IR_V2_COMMAND \
+ 	"prepare_mcore=setenv mcore_clk clk-imx93.mcore_booted;\0" \
+-	"scriptaddr=0x83500000\0" \
++	"scriptaddr=0x84500000\0" \
+ 	"kernel_addr_r=" __stringify(CONFIG_SYS_LOAD_ADDR) "\0" \
+ 	"image=Image\0" \
+ 	"splashimage=0x90000000\0" \
+ 	"console=ttyLP0,115200 earlycon\0" \
+-	"fdt_addr_r=0x83000000\0"			\
+-	"fdt_addr=0x83000000\0"			\
++	"fdt_addr_r=0x84000000\0"			\
++	"fdt_addr=0x84000000\0"			\
+ 	"fdt_high=0xffffffffffffffff\0"		\
+ 	"cntr_addr=0x98000000\0"			\
+ 	"cntr_file=os_cntr_signed.bin\0" \
