@@ -1,0 +1,30 @@
+From 9f4ddc49091520c982fc91770f19eb458a3b5ccf Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pasi=20Pet=C3=A4j=C3=A4j=C3=A4rvi?= <pasi.petajajarvi@qt.io>
+Date: Fri, 13 Dec 2024 14:11:29 +0000
+Subject: [PATCH] Add cargo-c support
+
+Upstream-Status: Inappropriate
+---
+ capi/Cargo.toml | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/capi/Cargo.toml b/capi/Cargo.toml
+index 4891511..a9271ad 100644
+--- a/capi/Cargo.toml
++++ b/capi/Cargo.toml
+@@ -43,6 +43,13 @@ dwarf = ["blazesym/dwarf"]
+ # include/ directory, so this feature is only necessary when APIs are
+ # changed.
+ generate-c-header = ["dep:cbindgen", "dep:which"]
++capi = []
++
++[package.metadata.capi.header]
++generation = false
++
++[package.metadata.capi.install.include]
++asset = [{ from="include/blazesym.h" }]
+ 
+ [[bench]]
+ name = "capi"
+-- 
+2.43.0
