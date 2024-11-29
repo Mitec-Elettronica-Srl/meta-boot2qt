@@ -1,0 +1,35 @@
+From 7b00606028e52ab608502f688f2e075233219642 Mon Sep 17 00:00:00 2001
+From: Mikko Hallamaa <mikko.hallamaa@qt.io>
+Date: Fri, 29 Nov 2024 12:36:32 +0100
+Subject: [PATCH] v4l2object: Fixed incorrect maximum value for int range
+
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Polomsk=C3=BD?=
+ <1155369-polomsky@users.noreply.gitlab.freedesktop.org>
+
+There are objects where maximum is not multiplication of the step,
+e.g. there was a combination where max was 65535 with step 2.
+
+Part-of: <https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/7953>
+
+Upstream-Status: Backport 1.24.10
+---
+ sys/v4l2/gstv4l2object.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/sys/v4l2/gstv4l2object.c b/sys/v4l2/gstv4l2object.c
+index acceb53..d8a5b53 100644
+--- a/sys/v4l2/gstv4l2object.c
++++ b/sys/v4l2/gstv4l2object.c
+@@ -3057,7 +3057,11 @@ gst_v4l2_object_probe_caps_for_format (GstV4l2Object * v4l2object,
+     maxw = MIN (size.stepwise.max_width, G_MAXINT);
+     maxh = MIN (size.stepwise.max_height, G_MAXINT);
+ 
+-    /* FIXME: check for sanity and that min/max are multiples of the steps */
++    /* ensure maxes are multiples of the steps */
++    maxw -= maxw % step_w;
++    maxh -= maxh % step_h;
++
++    /* FIXME: check for sanity */
+ 
+     /* we only query details for the max width/height since it's likely the
+      * most restricted if there are any resolution-dependent restrictions */
