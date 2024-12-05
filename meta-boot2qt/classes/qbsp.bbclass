@@ -44,8 +44,8 @@ INHIBIT_DEFAULT_DEPS = "1"
 do_qbsp[depends] += "\
     p7zip-native:do_populate_sysroot \
     installer-framework-native:do_populate_sysroot \
-    ${@d.getVar('QBSP_SDK_TASK', True) + ':do_populate_sdk' if d.getVar('QBSP_SDK_TASK', True) else ''}  \
-    ${@d.getVar('QBSP_IMAGE_TASK', True) + ':do_image_complete' if d.getVar('QBSP_IMAGE_TASK', True) else ''}  \
+    ${@d.getVar('QBSP_SDK_TASK') + ':do_populate_sdk' if d.getVar('QBSP_SDK_TASK') else ''}  \
+    ${@d.getVar('QBSP_IMAGE_TASK') + ':do_image_complete' if d.getVar('QBSP_IMAGE_TASK') else ''}  \
     ${QBSP_IMAGE_DEPENDS} \
 "
 
