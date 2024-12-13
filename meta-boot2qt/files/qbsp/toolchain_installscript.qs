@@ -84,7 +84,7 @@ Component.prototype.createOperations = function()
             "\
 FROM --platform=linux/@DOCKER_ARCH@ ubuntu:24.04\n\
 ENV LANG C.UTF-8\n\
-RUN apt-get update && DEBIAN_FRONTEND=\"noninteractive\" apt-get install -y --no-install-recommends python3 xz-utils file make clangd git && rm -rf /var/lib/apt/lists/*\n\
+RUN apt-get update && DEBIAN_FRONTEND=\"noninteractive\" apt-get install -y --no-install-recommends python3 xz-utils file make clangd git ca-certificates && rm -rf /var/lib/apt/lists/*\n\
 COPY *.sh /\n\
 RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
 
