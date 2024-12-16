@@ -15,7 +15,7 @@
            path="sources/meta-mingw"/>
   <project name="meta-virtualization"
            remote="yocto"
-           revision="6f3c1d8f90947408a6587be222fec575a1ca5195"
+           revision="450941a1b6df96285691e8c23d4f332d3c88a994"
            upstream="scarthgap"
            path="sources/meta-virtualization" />
 
@@ -33,7 +33,7 @@
           fetch="https://github.com/kraj"/>
   <project name="meta-clang"
            remote="kraj"
-           revision="2b7433611d80f6d0ee1b04156fa91fc73d3c2665"
+           revision="9fbfa9db33131abdf3870a94f00199eb53e276e5"
            upstream="scarthgap"
            path="sources/meta-clang"/>
 
@@ -54,12 +54,12 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="d4c96eb34b0b0edc2905e3df5278e01cdb275416"
+           revision="9f7ec458e78fc07ec8bea4fc906d04be6a5a34d7"
            upstream="scarthgap"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
            remote="freescale"
-           revision="2602df3c730d970b8a4aa685b9f43d7ccd2c5d0f"
+           revision="1dfc65dd2006b51d156be5bcda0e3c72c936ad0a"
            upstream="scarthgap"
            path="sources/meta-freescale-3rdparty"/>
 
@@ -75,7 +75,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="c2bc8e27e9cc83654a23e8d89525fd9b1e781eb6"
+           revision="b61d5310fcb4e5077bb4b1de0228dc45ba69510f"
            upstream="scarthgap"
            path="sources/meta-intel"/>
 
@@ -84,7 +84,7 @@
           fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
-           revision="2b913f175f99bdd6940bc425f247fee73154a002"
+           revision="8ca5d550a184f434600cfbba33892bc8c34f7e81"
            upstream="scarthgap-l4t-r35.x"
            path="sources/meta-tegra"/>
 </manifest>
