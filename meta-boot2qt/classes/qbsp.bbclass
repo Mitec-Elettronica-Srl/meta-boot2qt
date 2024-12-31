@@ -133,11 +133,8 @@ prepare_qbsp() {
             if [ -d "$src" ]; then
                 mkdir -p ${B}/qbsp-image/$dst
                 cp -r $src/* ${B}/qbsp-image/$dst
-            elif [ -e "${DEPLOY_DIR_IMAGE}/$src" ]; then
-                install -D -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${B}/qbsp-image/$dst
             else
-                echo "Could not copy file $src"
-                exit 1
+                install -D -m 0755 ${DEPLOY_DIR_IMAGE}/$src ${B}/qbsp-image/$dst
             fi
         done
 
