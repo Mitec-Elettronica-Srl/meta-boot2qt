@@ -28,6 +28,7 @@ RDEPENDS:${PN} = "\
         rsync \
         tslib-calibrate \
         sysstat \
+        nfs-utils \
         ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "systemd-analyze", "", d)} \
         ${@bb.utils.contains_any("TRANSLATED_TARGET_ARCH", "x86-64 aarch64 riscv64", "bpftool", "", d)} \
         "
