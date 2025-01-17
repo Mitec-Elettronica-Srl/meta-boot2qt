@@ -12,7 +12,8 @@ USE_QT_DEMO_LAUNCHER ?= "${@bb.utils.contains('DISTRO_FEATURES', 'wayland', \
     bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.7', '>'), False, d)}"
 
 USE_PYSIDE ?= "${@bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.7.0', '>') & \
-    bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.8', '<')}"
+    bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.8.0', '!=') & \
+    bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.9', '<')}"
 
 RDEPENDS:${PN} += " \
     ${@'boot2qt-demolauncher' if bb.utils.to_boolean(d.getVar('USE_QT_DEMO_LAUNCHER')) else ''} \
