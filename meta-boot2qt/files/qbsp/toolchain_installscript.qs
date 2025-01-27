@@ -174,6 +174,7 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
          "--cmake-config", "QT_QMAKE_EXECUTABLE:STRING=%{Qt:qmakeExecutable}",
          "--cmake-config", "CMAKE_TOOLCHAIN_FILE:FILEPATH=" + path + "/sysroots/" + hostSysroot + "/usr/lib/cmake/Qt6/qt.toolchain.cmake",
          "--cmake-config", "CMAKE_MAKE_PROGRAM:FILEPATH=" + path + "/sysroots/"+ hostSysroot + "/usr/bin/ninja" + executableExt,
+         "PE.Profile.FileSystemFriendlyName", "QString:@VERSION@-@MACHINE@",
          "UNDOEXECUTE",
          "@SDKToolBinary@", "rmKit", "--id", component.name]);
 
