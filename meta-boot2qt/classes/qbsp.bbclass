@@ -92,6 +92,7 @@ patch_installer_files() {
         -e "s#@TOOLCHAIN_HOST_TYPE@#${TOOLCHAIN_HOST_TYPE}#" \
         -e "s#@DOCKER_ARCH@#${@'arm64' if d.getVar('SDKMACHINE') == 'aarch64' else 'amd64'}#" \
         -e "s#@VERSION@#${PV}#" \
+        -e "s#@QT_VERSION@#${QT_VERSION}#" \
         -e "s#@YOCTO@#${DISTRO_VERSION} (${DISTRO_CODENAME})#" \
         -e "s#@QBSP_OS_TYPE@#${QBSP_OS_TYPE}#" \
         -e "s#@QBSP_QT_TYPE@#${QBSP_QT_TYPE}#" \

@@ -7,6 +7,15 @@ function Component()
     if (installer.componentByName("embedded.tools"))
         component.addDependency("embedded.tools");
 
+    var qt_version = "@QT_VERSION@".replace(/\./g, "");
+    var doc_collection = "qt.qt6." + qt_version + ".doc_collection";
+    if (installer.componentByName(doc_collection))
+        component.addDependency(doc_collection);
+
+    var examples_collection = "qt.qt6." + qt_version + ".examples_collection";
+    if (installer.componentByName(examples_collection))
+        component.addDependency(examples_collection);
+
     if ("@TOOLCHAIN_HOST_TYPE@" == "windows" && systemInfo.kernelType !== "winnt") {
         component.enabled = false;
         component.setValue("Default", false);
