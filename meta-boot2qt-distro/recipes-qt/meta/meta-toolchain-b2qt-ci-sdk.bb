@@ -6,7 +6,7 @@ DESCRIPTION = "Qt6 SDK toolchain for CI use"
 LICENSE = "The-Qt-Company-Commercial"
 LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5=40a1036f91cefc0e3fabad241fb5f187"
 
-inherit populate_sdk
+inherit populate_b2qt_qt6_sdk
 
 SDKIMAGE_FEATURES = "dev-pkgs"
 
@@ -37,7 +37,7 @@ apply_ci_fixes () {
 }
 
 # Append current layer revision to toolchain file name
-TOOLCHAIN_OUTPUTNAME:append = "-${@oe.buildcfg.get_metadata_git_revision(d.getVar('BOOT2QTBASE'))[:8]}"
+TOOLCHAIN_OUTPUTNAME:append = "-${@oe.buildcfg.get_metadata_git_revision(d.getVar('BOOT2QTBASE'))[:8].strip('<')}"
 
 # Prepare the root links to point to the /usr counterparts.
 create_merged_usr_symlinks() {
