@@ -3,6 +3,8 @@
 
 function Component()
 {
+    if (installer.componentByName("mocwrapper"))
+        component.addDependency("mocwrapper");
 }
 
 Component.prototype.createOperations = function()
@@ -182,4 +184,8 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
         var settingsFile = installer.value("QtCreatorInstallerSettingsFile");
         component.addOperation("Settings", "path="+settingsFile, "method=add_array_value", "key=Plugins/ForceEnabled", "value=Docker");
     }
+
+    if (installer.componentByName("mocwrapper") && !container)
+        install_mocwrapper(component, path + "/sysroots/" + hostSysroot + "/usr/libexec")
+
 }
