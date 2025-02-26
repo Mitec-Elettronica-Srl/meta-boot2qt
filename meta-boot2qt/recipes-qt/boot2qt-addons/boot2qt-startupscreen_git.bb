@@ -3,7 +3,7 @@
 
 DESCRIPTION = "Boot to Qt Startup Screen"
 LICENSE = "BSD-3-Clause | The-Qt-Company-Commercial"
-LIC_FILES_CHKSUM = "file://main.cpp;md5=5c11ee2d9fe17c24e80b866d1b758458;beginline=1;endline=49"
+LIC_FILES_CHKSUM = "file://main.cpp;md5=123fa3be981d2a73f4680a70d277c22a;beginline=1;endline=49"
 
 inherit qt6-cmake systemd
 require recipes-qt/qt6/qt6-git.inc
@@ -30,4 +30,4 @@ do_install:append() {
 
 SYSTEMD_SERVICE:${PN} = "startupscreen.service"
 
-SRCREV = "4969bc3f2ef43d0809133e287814151dbb330d9b"
+SRCREV = "7db9a1314622ad11e12c64cb44e70fea134d29b1"
