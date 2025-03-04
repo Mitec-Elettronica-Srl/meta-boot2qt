@@ -13,6 +13,9 @@ python enable_internal_build () {
     # enable commercial modules and qmlcompiler
     e.data.setVar('QT_COMMERCIAL_MODULES', '1')
 
+    e.data.setVar('SQUISH_MIRROR', 'https://ci-files01-hki.ci.qt.io/input/squish/releasepackages')
+    e.data.setVar('SQUISH_LICENSE_KEY', 'qt-srv-19.intra.qt.io:49345')
+
     e.data.setVar('QT_INTERNAL_BUILD', "1")
     e.data.prependVar('SSTATE_MIRRORS', "file://.* https://yocto-cache.ci.qt.io/sstate-caches/${DISTRO}-${DISTRO_CODENAME}/PATH ")
     e.data.setVar("BB_HASHSERVE_UPSTREAM", "yocto-cache.ci.qt.io:8686")
