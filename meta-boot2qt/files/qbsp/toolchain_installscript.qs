@@ -185,7 +185,12 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
         component.addOperation("Settings", "path="+settingsFile, "method=add_array_value", "key=Plugins/ForceEnabled", "value=Docker");
     }
 
-    if (installer.componentByName("mocwrapper") && !container)
-        install_mocwrapper(component, path + "/sysroots/" + hostSysroot + "/usr/libexec")
+    if (installer.componentByName("mocwrapper") && !container) {
+        var mocPath = "/usr/libexec";
+        if (systemInfo.kernelType == "winnt")
+            mocPath = "/usr/bin";
+
+        install_mocwrapper(component, path + "/sysroots/" + hostSysroot + mocPath);
+    }
 
 }
