@@ -1,7 +1,7 @@
 # Copyright (C) 2024 The Qt Company Ltd.
 # SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 
-DEPLOY_CONF_NAME:jetson-agx-orin-devkit = "NVIDIA Jetson AGX Orin Developer Kit"
+DEPLOY_CONF_NAME:jetson-agx-orin-devkit = "NVIDIA Jetson AGX Orin 64GB Developer Kit"
 DEPLOY_CONF_NAME:jetson-orin-nano-devkit = "NVIDIA Jetson Orin Nano Developer Kit"
 
 # Attach unsigned kernel image and dtb into boot folder of rootfs
