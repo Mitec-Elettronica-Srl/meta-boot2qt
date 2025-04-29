@@ -6,12 +6,11 @@ inherit nopackages abi-arch siteinfo image-artifact-names
 FILESEXTRAPATHS:prepend := "${BOOT2QTBASE}/files/qbsp:"
 
 SRC_URI = "\
-    file://base_package.xml \
-    file://base_installscript.qs \
-    file://image_package.xml \
-    file://toolchain_package.xml \
-    file://toolchain_installscript.qs \
-    file://license_package.xml \
+    file://base_package.xml.in \
+    file://base_installscript.qs.in \
+    file://image_package.xml.in \
+    file://toolchain_package.xml.in \
+    file://toolchain_installscript.qs.in \
     "
 
 INHIBIT_DEFAULT_DEPS = "1"
@@ -34,6 +33,7 @@ QBSP_INSTALLER_COMPONENT ?= "${@d.getVar('MACHINE').replace('-','')}"
 QBSP_INSTALL_PATH ?= "/Extras/${MACHINE}"
 
 QBSP_LICENSE_FILE ??= ""
+QBSP_LICENSE_FILE_BASENAME = "${@os.path.basename(d.getVar('QBSP_LICENSE_FILE')) if d.getVar('QBSP_LICENSE_FILE') else ''}"
 QBSP_LICENSE_NAME ??= ""
 
 QBSP_FORCE_CONTAINER_TOOLCHAIN ?= "false"
@@ -59,6 +59,8 @@ SDK_POSTFIX:sdkmingw32 = ".tar.xz"
 REAL_MULTIMACH_TARGET_SYS = "${TUNE_PKGARCH}${TARGET_VENDOR}-${TARGET_OS}"
 SDK_DEPLOY ?= "${DEPLOY_DIR}/sdk"
 
+DOCKER_ARCH = "${@'arm64' if d.getVar('SDKMACHINE') == 'aarch64' else 'amd64'}"
+
 QBSP_OS_TYPE ?= "GenericLinuxOsType"
 QBSP_OS_TYPE:b2qt ?= "QdbLinuxOsType"
 QBSP_QT_TYPE ?= "RemoteLinux.EmbeddedLinuxQt"
@@ -66,38 +68,29 @@ QBSP_QT_TYPE:b2qt ?= "Qdb.EmbeddedLinuxQt"
 
 B = "${WORKDIR}/build"
 
-patch_installer_files() {
-    LICENSE_DEPENDENCY=""
-    if [ -n "${QBSP_LICENSE_FILE}" ]; then
-        LICENSE_DEPENDENCY="${QBSP_INSTALLER_COMPONENT}.license"
-    fi
+def render_template(d, input, output):
+    import os
+    from jinja2 import Environment, FileSystemLoader, meta
 
-    sed -e "s#@NAME@#${QBSP_NAME}#" \
-        -e "s#@TARGET@#${DEPLOY_CONF_NAME}#" \
-        -e "s#@QBSP_VERSION@#${QBSP_VERSION}#" \
-        -e "s#@RELEASEDATE@#${RELEASEDATE}#" \
-        -e "s#@MACHINE@#${MACHINE}#" \
-        -e "s#@SYSROOT@#${REAL_MULTIMACH_TARGET_SYS}#" \
-        -e "s#@TARGET_SYS@#${TARGET_SYS}#" \
-        -e "s#@ABI@#${ABI}#" \
-        -e "s#@BITS@#${SITEINFO_BITS}#" \
-        -e "s#@INSTALLPATH@#${QBSP_INSTALL_PATH}#" \
-        -e "s#@SDKPATH@#${SDKPATH}#" \
-        -e "s#@SDKFILE@#${QBSP_SDK}#" \
-        -e "s#@LICENSEDEPENDENCY@#${LICENSE_DEPENDENCY}#" \
-        -e "s#@LICENSEFILE@#$(basename ${QBSP_LICENSE_FILE})#" \
-        -e "s#@LICENSENAME@#${QBSP_LICENSE_NAME}#" \
-        -e "s#@TOOLCHAIN_HOST_SYSROOT@#${SDK_SYS}#" \
-        -e "s#@FORCE_CONTAINER_TOOLCHAIN@#${QBSP_FORCE_CONTAINER_TOOLCHAIN}#" \
-        -e "s#@TOOLCHAIN_HOST_TYPE@#${TOOLCHAIN_HOST_TYPE}#" \
-        -e "s#@DOCKER_ARCH@#${@'arm64' if d.getVar('SDKMACHINE') == 'aarch64' else 'amd64'}#" \
-        -e "s#@VERSION@#${PV}#" \
-        -e "s#@QT_VERSION@#${QT_VERSION}#" \
-        -e "s#@YOCTO@#${DISTRO_VERSION} (${DISTRO_CODENAME})#" \
-        -e "s#@QBSP_OS_TYPE@#${QBSP_OS_TYPE}#" \
-        -e "s#@QBSP_QT_TYPE@#${QBSP_QT_TYPE}#" \
-        -i ${1}/*
-}
+    with open(input) as f:
+        source = f.read()
+
+    env = Environment(trim_blocks=True)
+
+    parsed_content = env.parse(source)
+    variables = meta.find_undeclared_variables(parsed_content)
+
+    context = {}
+    for var in variables:
+        val = d.getVar(var)
+        if val is not None:
+            context[var] = val
+
+    template = env.from_string(source)
+    rendered = template.render(context)
+
+    with open(output, "w") as f:
+        f.write(rendered)
 
 prepare_qbsp() {
     # Toolchain component
@@ -108,7 +101,6 @@ prepare_qbsp() {
 
         cp ${WORKDIR}/toolchain_package.xml ${COMPONENT_PATH}/meta/package.xml
         cp ${WORKDIR}/toolchain_installscript.qs ${COMPONENT_PATH}/meta/installscript.qs
-        patch_installer_files ${COMPONENT_PATH}/meta
 
         if [ "${SDK_POSTFIX}" = "${SDK_POSTFIX:sdkmingw32}" ]; then
             cp ${SDK_DEPLOY}/${QBSP_SDK} ${COMPONENT_PATH}/data/toolchain${SDK_POSTFIX}
@@ -124,7 +116,6 @@ prepare_qbsp() {
         mkdir -p ${COMPONENT_PATH}/data
 
         cp ${WORKDIR}/image_package.xml ${COMPONENT_PATH}/meta/package.xml
-        patch_installer_files ${COMPONENT_PATH}/meta
 
         mkdir -p ${B}/qbsp-image
         for item in ${QBSP_IMAGE_CONTENT}; do
@@ -143,23 +134,15 @@ prepare_qbsp() {
         7za a ${COMPONENT_PATH}/data/image.7z .
     fi
 
-    # License component
-    if [ -n "${QBSP_LICENSE_FILE}" ]; then
-        COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.license"
-        mkdir -p ${COMPONENT_PATH}/meta
-
-        cp ${WORKDIR}/license_package.xml ${COMPONENT_PATH}/meta/package.xml
-        cp ${QBSP_LICENSE_FILE} ${COMPONENT_PATH}/meta/
-        patch_installer_files ${COMPONENT_PATH}/meta
-    fi
-
     # Base component
     COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}"
     mkdir -p ${COMPONENT_PATH}/meta
 
     cp ${WORKDIR}/base_package.xml ${COMPONENT_PATH}/meta/package.xml
     cp ${WORKDIR}/base_installscript.qs ${COMPONENT_PATH}/meta/installscript.qs
-    patch_installer_files ${COMPONENT_PATH}/meta
+    if [ -n "${QBSP_LICENSE_FILE}" ]; then
+        cp ${QBSP_LICENSE_FILE} ${COMPONENT_PATH}/meta/
+    fi
 }
 
 create_qbsp() {
@@ -176,6 +159,12 @@ create_qbsp() {
 }
 
 python do_qbsp() {
+    workdir = d.getVar("WORKDIR")
+    for template in os.listdir(workdir):
+        if template.endswith(".in"):
+            output = template[:-3]
+            render_template(d,os.path.join(workdir,template),os.path.join(workdir,output))
+
     bb.build.exec_func('create_qbsp', d)
 }
 
