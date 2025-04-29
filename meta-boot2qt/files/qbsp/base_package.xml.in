@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Package>
+  <Version>{{ QBSP_VERSION }}</Version>
+  <ReleaseDate>{{ RELEASEDATE }}</ReleaseDate>
+  <DisplayName>{{ DEPLOY_CONF_NAME }}</DisplayName>
+  <Description>{{ QBSP_NAME }} for {{ DEPLOY_CONF_NAME }}.&lt;br&gt;Based on Yocto {{ DISTRO_VERSION }} ({{ DISTRO_CODENAME }}) release.</Description>
+{% if QBSP_LICENSE_NAME %}
+  <Licenses>
+    <License name="{{ QBSP_LICENSE_NAME }}" file="{{ QBSP_LICENSE_FILE_BASENAME }}"/>
+  </Licenses>
+{% endif %}
+  <Script>installscript.qs</Script>
+  <Default>false</Default>
+</Package>

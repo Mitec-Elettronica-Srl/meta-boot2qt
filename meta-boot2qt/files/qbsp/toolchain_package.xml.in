@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<Package>
+  <Version>{{ QBSP_VERSION }}</Version>
+  <ReleaseDate>{{ RELEASEDATE }}</ReleaseDate>
+  <DisplayName>{{ DEPLOY_CONF_NAME }} Linux Toolchain</DisplayName>
+  <Description>Toolchain and system root for {{ DEPLOY_CONF_NAME }}</Description>
+  <Dependencies>qt.tools.qtcreator</Dependencies>
+  <Script>installscript.qs</Script>
+  <Default>false</Default>
+  <Operations>
+    <Operation name="Extract">
+      <Argument>@TargetDir@{{ QBSP_INSTALL_PATH }}/toolchain</Argument>
+    </Operation>
+  </Operations>
+</Package>
