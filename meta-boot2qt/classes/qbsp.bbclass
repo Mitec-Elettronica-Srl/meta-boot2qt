@@ -32,6 +32,8 @@ QBSP_VERSION ?= "${PV}${VERSION_AUTO_INCREMENT}"
 QBSP_INSTALLER_COMPONENT ?= "${@d.getVar('MACHINE').replace('-','')}"
 QBSP_INSTALL_PATH ?= "/Extras/${MACHINE}"
 
+QBSP_DEVICE_IP ??= ""
+
 QBSP_LICENSE_FILE ??= ""
 QBSP_LICENSE_FILE_BASENAME = "${@os.path.basename(d.getVar('QBSP_LICENSE_FILE')) if d.getVar('QBSP_LICENSE_FILE') else ''}"
 QBSP_LICENSE_NAME ??= ""
