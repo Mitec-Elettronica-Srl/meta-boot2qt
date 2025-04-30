@@ -158,6 +158,23 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
             "@SDKToolBinary@", "rmDev", "--id", buildDeviceId]);
     }
 
+{% if QBSP_DEVICE_IP %}
+    var runDeviceId = component.name;
+    component.addOperation("Execute",
+        ["@SDKToolBinary@", "addDev",
+        "--id", runDeviceId,
+        "--name", "Device " + platform,
+        "--type", "0",
+        "--osType", "{{ QBSP_OS_TYPE }}",
+        "--origin", "0",
+        "--host", "{{ QBSP_DEVICE_IP }}",
+        "--authentication", "0",
+        "--uname", "root",
+        "ExtraData/RemoteLinux.SourceProfile", "bool:true",
+        "UNDOEXECUTE",
+        "@SDKToolBinary@", "rmDev", "--id", runDeviceId]);
+{% endif %}
+
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addKit",
          "--id", component.name,
@@ -167,6 +184,9 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
          "--debuggerid", component.name,
          "--sysroot", dockerPrefix + path + "/sysroots/" + sysroot,
          "--devicetype", "{{ QBSP_OS_TYPE }}",
+{% if QBSP_DEVICE_IP %}
+         "--device", runDeviceId,
+{% endif %}
          "--builddevice", buildDeviceId,
          "--Ctoolchain", toolchainId + ".gcc",
          "--Cxxtoolchain", toolchainId + ".g++",
