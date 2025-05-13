@@ -20,7 +20,7 @@ Component.prototype.createOperations = function()
     var sdkPath = "{{ SDKPATH }}";
     var sdkFile = "{{ QBSP_SDK }}";
     var hostSysroot = "{{ SDK_SYS }}";
-    var imageTag = "Qt-{{ MACHINE }}:{{ QT_VERSION }}"
+    var imageTag = "qt-{{ MACHINE }}:{{ QT_VERSION }}"
     var dockerPrefix = "";
 
     var container = {{ QBSP_FORCE_CONTAINER_TOOLCHAIN }};
@@ -150,7 +150,7 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
             "--type", "0",
             "--osType", "DockerDeviceType",
             "--origin", "1",
-            "--dockerRepo", "Qt-{{ MACHINE }}",
+            "--dockerRepo", "qt-{{ MACHINE }}",
             "--dockerTag", "{{ QT_VERSION }}",
             "--dockerMappedPaths", installer.value("TargetDir"),
             "--dockerClangdExecutable", dockerPrefix + "/usr/bin/clangd",
