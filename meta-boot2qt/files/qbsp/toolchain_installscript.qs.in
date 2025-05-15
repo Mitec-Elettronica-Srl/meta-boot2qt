@@ -87,11 +87,6 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
         toolchainId = "ProjectExplorer.ToolChain.Mingw:" + component.name;
     }
 
-    component.addOperation("Execute", "{0,2}",
-        ["@SDKToolBinary@", "addAbiFlavor",
-         "--flavor", "poky",
-         "--oses", "linux"]);
-
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addTC",
         "--id", toolchainId + ".gcc",
