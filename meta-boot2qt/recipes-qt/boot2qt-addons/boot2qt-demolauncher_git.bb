@@ -25,7 +25,13 @@ SRCREV = "9fb7f723cf2bcf840075e361d473f82015d42334"
 SRCREV_FORMAT = "${QT_MODULE}"
 SRCREV_metadata = "588d3b72ee3fd52f3dea26fb38799ff73222a6b8"
 
-DEPENDS += "qtbase qtdeclarative qtdeclarative-native qtwayland qtwayland-native"
+DEPENDS += "\
+    qtbase \
+    qtdeclarative \
+    qtdeclarative-native \
+    qtwayland \
+    ${@'qtwayland-native' if bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.10', '<') else ''} \
+"
 RDEPENDS:${PN} += "qtdoc-examples"
 
 S = "${WORKDIR}/git"
