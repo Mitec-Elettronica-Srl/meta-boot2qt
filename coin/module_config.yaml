@@ -39,7 +39,7 @@ environment: &environment
         equals_value: TARGET3
     - type: EnvironmentVariable
       variableName: MACHINE
-      variableValue: raspberrypi4-64
+      variableValue: raspberrypi-armv8
       enable_if:
         condition: property
         property: target.arch
