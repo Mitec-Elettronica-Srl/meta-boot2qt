@@ -9,8 +9,6 @@ EXTRA_OEMAKE:remove = "PAHOLE=false"
 
 SRC_URI += "\
     file://0001-6.6-vt-conmakehash-improve-reproducibility.patch \
-    file://0001-lib-build_OID_registry-don-t-mention-the-full-path-o.patch \
-    file://0001-video-logo-Drop-full-path-of-the-input-filename-in-g.patch \
     file://tracing.cfg \
 "
 
