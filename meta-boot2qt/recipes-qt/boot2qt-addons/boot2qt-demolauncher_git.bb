@@ -17,7 +17,7 @@ QT_MODULE_BRANCH = "dev"
 CVE_PRODUCT = "${BPN}"
 
 SRC_URI += " \
-    ${QT_GIT}/qt-apps/boot2qt-demos.git;name=metadata;branch=dev;protocol=${QT_GIT_PROTOCOL};destsuffix=git/metadata \
+    ${QT_GIT}/qt-apps/boot2qt-demos.git;name=metadata;branch=dev;protocol=${QT_GIT_PROTOCOL};destsuffix=${BB_GIT_DEFAULT_DESTSUFFIX}/metadata \
     file://demolauncher.service \
     "
 
@@ -34,14 +34,12 @@ DEPENDS += "\
 "
 RDEPENDS:${PN} += "qtdoc-examples"
 
-S = "${WORKDIR}/git"
-
 do_install:append() {
     for DEMONAME in startupscreen calqlatr coffee robotarm samegame thermostat todolist
     do
         install -d 0644 ${D}/usr/share/examples/boot2qt-launcher-demos/${DEMONAME}
-        install -m 0644 ${WORKDIR}/git/metadata/metadata/${DEMONAME}/demo.xml ${D}/usr/share/examples/boot2qt-launcher-demos/${DEMONAME}
-        install -m 0644 ${WORKDIR}/git/metadata/metadata/${DEMONAME}/preview.png ${D}/usr/share/examples/boot2qt-launcher-demos/${DEMONAME}
+        install -m 0644 ${WORKDIR}/${BB_GIT_DEFAULT_DESTSUFFIX}/metadata/metadata/${DEMONAME}/demo.xml ${D}/usr/share/examples/boot2qt-launcher-demos/${DEMONAME}
+        install -m 0644 ${WORKDIR}/${BB_GIT_DEFAULT_DESTSUFFIX}/metadata/metadata/${DEMONAME}/preview.png ${D}/usr/share/examples/boot2qt-launcher-demos/${DEMONAME}
     done
 
     install -m 0755 -d ${D}${systemd_unitdir}/system
