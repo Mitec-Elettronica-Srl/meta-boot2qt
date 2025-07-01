@@ -165,6 +165,9 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
         "--host", "{{ QBSP_DEVICE_IP }}",
         "--authentication", "0",
         "--uname", "root",
+        "--sshPort", "22",
+        "--freePorts", "10000-10100",
+        "--timeout", "10",
         "ExtraData/RemoteLinux.SourceProfile", "bool:true",
         "UNDOEXECUTE",
         "@SDKToolBinary@", "rmDev", "--id", runDeviceId]);
