@@ -5,7 +5,7 @@ ConditionPathExists=/usr/bin/b2qt
 
 [Service]
 User=root
-ExecStart=-/usr/bin/appcontroller /usr/bin/b2qt
+ExecStart=-/usr/bin/sh -c "XDG_RUNTIME_DIR=/run/user/$(id -u) /usr/bin/appcontroller /usr/bin/b2qt"
 
 [Install]
 WantedBy=multi-user.target
