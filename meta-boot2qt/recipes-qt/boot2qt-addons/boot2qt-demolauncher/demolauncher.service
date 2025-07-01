@@ -6,7 +6,7 @@ Conflicts=startupscreen.service
 
 [Service]
 User=root
-ExecStart=-/usr/bin/appcontroller /usr/bin/qtlauncher
+ExecStart=-/usr/bin/sh -c "XDG_RUNTIME_DIR=/run/user/$(id -u) /usr/bin/appcontroller /usr/bin/qtlauncher"
 
 [Install]
 WantedBy=multi-user.target

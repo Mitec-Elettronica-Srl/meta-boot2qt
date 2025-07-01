@@ -1,4 +1,2 @@
 QT_IM_MODULE=qtvirtualkeyboard
 QTWEBENGINE_DISABLE_SANDBOX=1
-XDG_RUNTIME_DIR=/run/user/0
-WAYLAND_DISPLAY=/run/wayland-0
