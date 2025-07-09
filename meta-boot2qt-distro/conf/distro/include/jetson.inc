@@ -21,3 +21,5 @@ NVIDIA_DEVNET_MIRROR[vardepsexclude] = "BSPDIR"
 
 # meta-tegra doesn't have styhead branch yet
 BBMASK = "meta-tegra/external/openembedded-layer/recipes-support/opencv/opencv_4.10.%.bbappend"
+
+MACHINE_EXTRA_INSTALL += "nvidia-container-toolkit"
