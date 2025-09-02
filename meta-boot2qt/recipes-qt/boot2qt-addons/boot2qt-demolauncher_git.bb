@@ -32,7 +32,7 @@ DEPENDS += "\
     qtwayland \
     ${@'qtwayland-native' if bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.10', '<') else ''} \
 "
-RDEPENDS:${PN} += "qtdoc-examples"
+RDEPENDS:${PN} += "qtdoc-examples ttf-titilliumweb boot2qt-startupscreen"
 
 do_install:append() {
     for DEMONAME in startupscreen calqlatr coffee robotarm samegame thermostat todolist
