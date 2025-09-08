@@ -54,6 +54,8 @@ MACHINE_GSTREAMER_1_0_PLUGIN += "gstreamer1.0-omx"
 # switch to full KMS
 VC4DTBO:raspberrypi-armv8 ?= "vc4-kms-v3d"
 
+BBMASK += "meta-raspberrypi/recipes-graphics/mesa/mesa.bbappend"
+
 RPI_KERNEL_DEVICETREE_OVERLAYS = "\
     overlays/overlay_map.dtb \
     overlays/act-led.dtbo \
