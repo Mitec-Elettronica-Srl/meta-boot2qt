@@ -23,7 +23,7 @@ SRC_URI += " \
 
 SRCREV = "9fb7f723cf2bcf840075e361d473f82015d42334"
 SRCREV_FORMAT = "${QT_MODULE}"
-SRCREV_metadata = "588d3b72ee3fd52f3dea26fb38799ff73222a6b8"
+SRCREV_metadata = "6ecef815b2277e88906e3e5baa4482256de39b64"
 
 DEPENDS += "\
     qtbase \
@@ -41,6 +41,12 @@ do_install:append() {
         install -m 0644 ${WORKDIR}/${BB_GIT_DEFAULT_DESTSUFFIX}/metadata/metadata/${DEMONAME}/demo.xml ${D}/usr/share/examples/boot2qt-launcher-demos/${DEMONAME}
         install -m 0644 ${WORKDIR}/${BB_GIT_DEFAULT_DESTSUFFIX}/metadata/metadata/${DEMONAME}/preview.png ${D}/usr/share/examples/boot2qt-launcher-demos/${DEMONAME}
     done
+
+    # in Qt version before 6.9, calqltr example had different name
+    if [ "${@bb.utils.vercmp_string_op(d.getVar('QT_VERSION'), '6.9', '<')}" = "True" ]; then
+        sed -i ${D}/usr/share/examples/boot2qt-launcher-demos/calqlatr/demo.xml \
+            -e 's|bin/calqlatr|bin/calqlatrexample|'
+    fi
 
     install -m 0755 -d ${D}${systemd_unitdir}/system
     install -m 0644 ${WORKDIR}/demolauncher.service ${D}${systemd_unitdir}/system/
