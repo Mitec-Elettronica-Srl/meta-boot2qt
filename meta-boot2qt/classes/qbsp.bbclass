@@ -55,7 +55,6 @@ IMAGE_BASENAME = "${QBSP_IMAGE_TASK}"
 
 QBSP_SDK ??= "${DISTRO}-${TCLIBC}-${SDKMACHINE}-${QBSP_SDK_TASK}-${TUNE_PKGARCH}-${MACHINE}-toolchain-${SDK_VERSION}"
 QBSP_SDK:b2qt ?= "${DISTRO}-${SDKMACHINE}-${QBSP_SDK_TASK}-${MACHINE}"
-QBSP_SDK:append = "${SDK_POSTFIX}"
 SDK_POSTFIX = ".sh"
 SDK_POSTFIX:sdkmingw32 = ".tar.xz"
 REAL_MULTIMACH_TARGET_SYS = "${TUNE_PKGARCH}${TARGET_VENDOR}-${TARGET_OS}"
@@ -96,7 +95,7 @@ def render_template(d, input, output):
 
 prepare_qbsp() {
     # Toolchain component
-    if [ -e ${SDK_DEPLOY}/${QBSP_SDK} ]; then
+    if [ -e ${SDK_DEPLOY}/${QBSP_SDK}${SDK_POSTFIX} ]; then
         COMPONENT_PATH="${B}/pkg/${QBSP_INSTALLER_COMPONENT}.toolchain"
         mkdir -p ${COMPONENT_PATH}/meta
         mkdir -p ${COMPONENT_PATH}/data
@@ -105,9 +104,14 @@ prepare_qbsp() {
         cp ${WORKDIR}/toolchain_installscript.qs ${COMPONENT_PATH}/meta/installscript.qs
 
         if [ "${SDK_POSTFIX}" = "${SDK_POSTFIX:sdkmingw32}" ]; then
-            cp ${SDK_DEPLOY}/${QBSP_SDK} ${COMPONENT_PATH}/data/toolchain${SDK_POSTFIX}
+            cp ${SDK_DEPLOY}/${QBSP_SDK}${SDK_POSTFIX} ${COMPONENT_PATH}/data/toolchain${SDK_POSTFIX}
         else
-            7za a -mx=0 ${COMPONENT_PATH}/data/toolchain.7z ${SDK_DEPLOY}/${QBSP_SDK}
+            7za a -mx=0 ${COMPONENT_PATH}/data/toolchain.7z ${SDK_DEPLOY}/${QBSP_SDK}${SDK_POSTFIX}
+        fi
+        if [ -e "${SDK_DEPLOY}/${QBSP_SDK}-target.spdx.tar.zst" ]; then
+            cp ${SDK_DEPLOY}/${QBSP_SDK}-host.spdx.tar.zst ${B}/toolchain-target.spdx.tar.zst
+            cp ${SDK_DEPLOY}/${QBSP_SDK}-target.spdx.tar.zst ${B}/toolchain-host.spdx.tar.zst
+            7za a -mx=0 ${COMPONENT_PATH}/data/spdx.7z ${B}/toolchain*.spdx.tar.zst
         fi
     fi
 

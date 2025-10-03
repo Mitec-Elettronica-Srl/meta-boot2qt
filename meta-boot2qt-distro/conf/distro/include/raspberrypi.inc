@@ -18,7 +18,8 @@ QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.${DEPLOY_CONF_IMAGE_TYPE} \
     ${IMAGE_LINK_NAME}.conf \
     ${IMAGE_LINK_NAME}.info \
-    "
+    ${IMAGE_LINK_NAME}.spdx.tar.zst \
+"
 
 MACHINE_EXTRA_INSTALL:append:arm = "\
         omxplayer \

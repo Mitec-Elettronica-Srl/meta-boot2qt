@@ -11,7 +11,8 @@ RRECOMMENDS:${KERNEL_PACKAGE_NAME}-base:append = " kernel-image"
 QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.info \
     ${IMAGE_LINK_NAME}.tegraflash.tar.gz \
-    "
+    ${IMAGE_LINK_NAME}.spdx.tar.zst \
+"
 
 # NVIDIA's Vulkan support is for X only
 DISTRO_FEATURES:remove = "vulkan"
