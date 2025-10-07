@@ -15,14 +15,8 @@ SRC_URI += "\
 
 QT_QPA_PLATFORM ?= "${@bb.utils.contains('DISTRO_FEATURES', 'opengl', 'eglfs', 'linuxfb', d)}"
 
-
-SQUISH_PREFIX ?= "${@'/opt/squish' if bb.utils.to_boolean(d.getVar('USE_SQUISH')) else ''}"
-
 do_configure() {
     echo "QT_QPA_PLATFORM=${QT_QPA_PLATFORM}" >> ${WORKDIR}/defaults
-    if [ -n "${SQUISH_PREFIX}" ]; then
-        echo "SQUISH_PREFIX=${SQUISH_PREFIX}" >> ${WORKDIR}/defaults
-    fi
 }
 
 do_install:append() {
