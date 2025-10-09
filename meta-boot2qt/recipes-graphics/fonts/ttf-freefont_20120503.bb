@@ -12,7 +12,7 @@ inherit allarch fontcache
 
 S = "${WORKDIR}/freefont-${PV}"
 
-SRC_URI = "http://ftp.gnu.org/gnu/freefont/freefont-ttf-${PV}.zip"
+SRC_URI = "http://ftpmirror.gnu.org/gnu/freefont/freefont-ttf-${PV}.zip"
 
 SRC_URI[md5sum] = "879b76d2e3c8003d567b555743f39154"
 SRC_URI[sha256sum] = "7c85baf1bf82a1a1845d1322112bc6ca982221b484e3b3925022e25b5cae89af"
