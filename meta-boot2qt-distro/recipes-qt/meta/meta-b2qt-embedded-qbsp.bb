@@ -14,7 +14,7 @@ inherit qbsp
 
 PV := "${@d.getVar('PV').split('+')[0]}"
 
-VERSION_SHORT = "${@d.getVar('PV').replace('.','') if d.getVar('QT_MODULE_BRANCH') != 'dev' else 'dev'}"
+VERSION_SHORT = "${@d.getVar('PV').replace('.','')}"
 QBSP_NAME = "Boot2Qt ${PV}"
 QBSP_MACHINE = "${@d.getVar('MACHINE').replace('-','')}"
 QBSP_INSTALLER_COMPONENT = "embedded.b2qt.${VERSION_SHORT}.${QBSP_MACHINE}"
