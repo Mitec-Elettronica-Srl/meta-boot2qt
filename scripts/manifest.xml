@@ -5,12 +5,12 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="poky"
            remote="yocto"
-           revision="refs/tags/yocto-5.0.12"
+           revision="refs/tags/yocto-5.0.13"
            upstream="scarthgap"
            path="sources/poky"/>
   <project name="meta-mingw"
            remote="yocto"
-           revision="refs/tags/yocto-5.0.12"
+           revision="refs/tags/yocto-5.0.13"
            upstream="scarthgap"
            path="sources/meta-mingw"/>
   <project name="meta-virtualization"
@@ -24,7 +24,7 @@
           fetch="git://git.openembedded.org"/>
   <project name="meta-openembedded"
            remote="oe"
-           revision="c29a18fa39ede952f3f6108ec007c1906e2d9a0d"
+           revision="15e18246dd0c0585cd1515a0be8ee5e2016d1329"
            upstream="scarthgap"
            path="sources/meta-openembedded"/>
 
@@ -33,7 +33,7 @@
           fetch="https://github.com/kraj"/>
   <project name="meta-clang"
            remote="kraj"
-           revision="057ee563305e9484b29d02347aeafdadc5ea28ed"
+           revision="731488911f55ebfe746068512b426351192f82f2"
            upstream="scarthgap"
            path="sources/meta-clang"/>
 
@@ -54,7 +54,7 @@
           fetch="https://github.com/Freescale"/>
   <project name="meta-freescale"
            remote="freescale"
-           revision="212f4b3b175f6d58c691192545454cd2d2e908d9"
+           revision="7d83a350d8b28498321a481a2a1c51bb4afb48e9"
            upstream="scarthgap"
            path="sources/meta-freescale"/>
   <project name="meta-freescale-3rdparty"
@@ -66,7 +66,7 @@
   <!-- Raspberry Pi -->
   <project name="meta-raspberrypi"
            remote="yocto"
-           revision="aaf976a665daa7e520545908adef8a0e9410b57f"
+           revision="8767e2ff80ec3b09cd70dd22cdb18e783ab20d7b"
            upstream="scarthgap"
            path="sources/meta-raspberrypi"/>
 
@@ -75,7 +75,7 @@
           fetch="git://git.yoctoproject.org"/>
   <project name="meta-intel"
            remote="intel"
-           revision="b065676a83371b34559f2077d9b2f6a6ac5652f7"
+           revision="6fc37057c7f0293a2345e303588901889df8b937"
            upstream="scarthgap"
            path="sources/meta-intel"/>
 
@@ -84,7 +84,7 @@
           fetch="https://github.com/OE4T"/>
   <project name="meta-tegra"
            remote="OE4T"
-           revision="aca8ae6dcaedd1651337838514d0797059c41406"
+           revision="dd3e9f679fb63bbc531e5ee0977ed9e78561d9cd"
            upstream="scarthgap"
            path="sources/meta-tegra"/>
 </manifest>
