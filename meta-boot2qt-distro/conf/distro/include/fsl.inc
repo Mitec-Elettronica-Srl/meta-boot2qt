@@ -21,3 +21,7 @@ DEPLOY_CONF_NAME:imx93-11x11-lpddr4x-evk = "NXP i.MX 93 11x11 LPDDR4X EVK"
 IMX_DEFAULT_BSP = "nxp"
 IMX_DEFAULT_BOOTLOADER:imx-nxp-bsp = "u-boot-imx"
 IMX_DEFAULT_KERNEL:imx-nxp-bsp = "linux-imx"
+
+QBSP_IMAGE_CONTENT:append:imx8ulp-lpddr4-evk = "\
+    imx-boot-imx8ulp-lpddr4-evk-sd.bin-flash_singleboot \
+"
