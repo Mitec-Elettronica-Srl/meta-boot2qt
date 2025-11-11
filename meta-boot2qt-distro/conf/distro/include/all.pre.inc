@@ -4,8 +4,15 @@ IMAGE_FSTYPES += "tar"
 #PACKAGE_EXCLUDE += " iptables "
 PACKAGE_EXCLUDE += " libnss-mdns "
 
+# x11: xwayland
 PACKAGECONFIG:append:pn-weston = " vnc shell-kiosk shell-ivi remoting systemd "
 PACKAGECONFIG:append:pn-neatvnc = " tls"
+
+# gtk stuff
+## x11: x11
+#PACKAGECONFIG:append:pn-gtk4 = " wayland gstreamer"
+## x11: x11
+#PACKAGECONFIG:append:pn-gtk+3 = " wayland opengl"
 
 # To disable security layer remove the following line
 DISTRO_FEATURES:remove = " directfb "
@@ -40,3 +47,7 @@ IMAGE_INSTALL:append = " \
     softether \
     embuer \
 "
+
+PREFERRED_VERSION_go = "1.25.0"
+PREFERRED_VERSION_golang-native = "1.25.0"
+PREFERRED_VERSION_golang-nativesdk = "1.25.0"
