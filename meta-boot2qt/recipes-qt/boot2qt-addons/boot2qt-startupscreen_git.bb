@@ -11,7 +11,6 @@ require recipes-qt/qt6/qt6-git.inc
 QT_GIT_PROJECT = "qt-apps"
 QT_MODULE = "boot2qt-demos"
 QT_MODULE_BRANCH = "dev"
-QT_MODULE_BRANCH_PARAM:append = ";destsuffix=${BP}"
 CVE_PRODUCT = "${BPN}"
 
 SRC_URI += "\
@@ -21,7 +20,7 @@ SRC_URI += "\
 DEPENDS += "qtbase qtdeclarative qtdeclarative-native"
 RDEPENDS:${PN} = "qtdeviceutilities"
 
-S = "${WORKDIR}/${BP}/startupscreen"
+S = "${WORKDIR}/git/startupscreen"
 
 do_install:append() {
     install -m 0755 -d ${D}${systemd_unitdir}/system
