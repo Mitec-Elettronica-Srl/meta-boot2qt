@@ -32,7 +32,7 @@ environment: &environment
         equals_value: TARGET2
     - type: EnvironmentVariable
       variableName: MACHINE
-      variableValue: jetson-agx-xavier-devkit
+      variableValue: jetson-agx-orin-devkit
       enable_if:
         condition: property
         property: target.arch
