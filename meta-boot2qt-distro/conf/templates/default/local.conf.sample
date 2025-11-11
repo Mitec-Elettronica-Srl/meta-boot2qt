@@ -315,4 +315,5 @@ LICENSE_FLAGS_ACCEPTED:append:rpi = "\
 # you can enable it by uncommenting following line
 #DISTRO_FEATURES_BACKFILL:append = " qtsaferenderer"
 
+include conf/distro/include/all.pre.inc
 include conf/distro/include/${MACHINE}.pre.inc
