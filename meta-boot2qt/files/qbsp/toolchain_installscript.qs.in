@@ -87,11 +87,6 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
         toolchainId = "ProjectExplorer.ToolChain.Mingw:" + component.name;
     }
 
-    component.addOperation("Execute", "{0,2}",
-        ["@SDKToolBinary@", "addAbiFlavor",
-         "--flavor", "poky",
-         "--oses", "linux"]);
-
     component.addOperation("Execute",
         ["@SDKToolBinary@", "addTC",
         "--id", toolchainId + ".gcc",
@@ -150,7 +145,7 @@ RUN sh *.sh -d /opt/toolchain -y && rm *.sh\n");
             "--type", "0",
             "--osType", "DockerDeviceType",
             "--origin", "1",
-            "--dockerRepo", "Qt-{{ MACHINE }}",
+            "--dockerRepo", "qt-{{ MACHINE }}",
             "--dockerTag", "{{ QT_VERSION }}",
             "--dockerMappedPaths", installer.value("TargetDir"),
             "--dockerClangdExecutable", dockerPrefix + "/usr/bin/clangd",

@@ -17,6 +17,7 @@ RDEPENDS:${PN} = "\
     nativesdk-make \
     nativesdk-ninja \
     nativesdk-perl-modules \
+    nativesdk-python3-html5lib \
     nativesdk-python3-spdx-tools \
     "
 
