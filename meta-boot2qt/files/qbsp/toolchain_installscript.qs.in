@@ -18,7 +18,7 @@ Component.prototype.createOperations = function()
     var abi = "{{ ABI }}-linux-poky-elf-{{ SITEINFO_BITS }}bit";
     var installPath = "{{ QBSP_INSTALL_PATH }}/toolchain";
     var sdkPath = "{{ SDKPATH }}";
-    var sdkFile = "{{ QBSP_SDK }}";
+    var sdkFile = "{{ QBSP_SDK }}{{SDK_POSTFIX}}";
     var hostSysroot = "{{ SDK_SYS }}";
     var imageTag = "Qt-{{ MACHINE }}:{{ QT_VERSION }}"
     var dockerPrefix = "";
@@ -61,6 +61,7 @@ Component.prototype.createOperations = function()
 
         component.addOperation("AppendFile", path + "/Dockerfile",
             "\
+#check=skip=FromPlatformFlagConstDisallowed\n\
 FROM --platform=linux/{{ DOCKER_ARCH }} ubuntu:24.04\n\
 ENV LANG=C.UTF-8\n\
 RUN apt-get update && DEBIAN_FRONTEND=\"noninteractive\" apt-get install -y --no-install-recommends python3 xz-utils file make clangd git ca-certificates && rm -rf /var/lib/apt/lists/*\n\

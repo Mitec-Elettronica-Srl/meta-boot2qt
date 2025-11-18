@@ -18,7 +18,8 @@ QBSP_IMAGE_CONTENT += "\
     ${IMAGE_LINK_NAME}.${DEPLOY_CONF_IMAGE_TYPE} \
     ${IMAGE_LINK_NAME}.conf \
     ${IMAGE_LINK_NAME}.info \
-    "
+    ${IMAGE_LINK_NAME}.spdx.tar.zst \
+"
 
 MACHINE_EXTRA_INSTALL:append:arm = "\
         omxplayer \
@@ -53,6 +54,8 @@ MACHINE_GSTREAMER_1_0_PLUGIN += "gstreamer1.0-omx"
 
 # switch to full KMS
 VC4DTBO:raspberrypi-armv8 ?= "vc4-kms-v3d"
+
+BBMASK += "meta-raspberrypi/recipes-graphics/mesa/mesa.bbappend"
 
 RPI_KERNEL_DEVICETREE_OVERLAYS = "\
     overlays/overlay_map.dtb \
