@@ -16,6 +16,8 @@ QT_MODULE = "boot2qt-launcher"
 QT_MODULE_BRANCH = "dev"
 CVE_PRODUCT = "${BPN}"
 
+BB_GIT_DEFAULT_DESTSUFFIX ?= "git"
+
 SRC_URI += " \
     ${QT_GIT}/qt-apps/boot2qt-demos.git;name=metadata;branch=dev;protocol=${QT_GIT_PROTOCOL};destsuffix=${BB_GIT_DEFAULT_DESTSUFFIX}/metadata \
     file://demolauncher.service \
