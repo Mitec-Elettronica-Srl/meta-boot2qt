@@ -17,7 +17,17 @@ PACKAGECONFIG:append:pn-neatvnc = " tls"
 # To disable security layer remove the following line
 DISTRO_FEATURES:remove = " directfb "
 # x11: x11 
-DISTRO_FEATURES:append = " wayland acl xattr pam "
+#DISTRO_FEATURES:append = " wayland acl xattr pam "
+# security + selinux layers
+DISTRO_FEATURES:append = " acl xattr pam seccomp security opengl wayland selinux "
+
+# selinux default policy
+PREFERRED_PROVIDER_virtual/refpolicy ?= "refpolicy-mls"
+
+
+# If you have access to QtSafeRenderer sources, either from git or QtSDK,
+# you can enable it by uncommenting following line
+#DISTRO_FEATURES_BACKFILL:append = " qtsaferenderer"
 
 # vim fails to build
 # building rustdesk: libvpx-staticdev aom-staticdev yuv-staticdev libopus-staticdev nasm yasm cmake clang ninja meson
