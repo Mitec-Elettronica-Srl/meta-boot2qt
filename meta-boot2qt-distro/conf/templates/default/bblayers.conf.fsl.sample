@@ -38,5 +38,5 @@ BBLAYERS ?= " \
 
 BBMASK += " \
   ${BSPDIR}/sources/meta-browser/meta-chromium/recipes-browser/chromium/gn-native_.*\.bb \
-  ${BSPDIR}/sources/poky/meta/recipes-devtools/go/*\.bb \
+  ${BSPDIR}/sources/poky/meta/recipes-devtools/go/.*\.bb \
   "
