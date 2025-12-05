@@ -58,6 +58,7 @@ IMAGE_INSTALL:append = " \
     zerotier-one \
     softether \
     embuer \
+    hmidaemon \
 "
 
 PREFERRED_VERSION_go = "1.25.2"
