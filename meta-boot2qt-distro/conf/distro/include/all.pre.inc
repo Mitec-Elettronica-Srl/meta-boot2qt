@@ -19,11 +19,13 @@ DISTRO_FEATURES:remove = " directfb "
 # x11: x11 
 #DISTRO_FEATURES:append = " wayland acl xattr pam "
 # security + selinux layers
-DISTRO_FEATURES:append = " acl xattr pam seccomp security opengl wayland selinux "
+#DISTRO_FEATURES:append = " acl xattr pam seccomp security opengl wayland selinux "
+DISTRO_FEATURES += " acl xattr pam seccomp security opengl wayland selinux "
 
 # selinux default policy
 PREFERRED_PROVIDER_virtual/refpolicy ?= "refpolicy-mls"
 
+EXTRA_IMAGE_FEATURES += "read-only-rootfs"
 
 # If you have access to QtSafeRenderer sources, either from git or QtSDK,
 # you can enable it by uncommenting following line
@@ -58,6 +60,6 @@ IMAGE_INSTALL:append = " \
     embuer \
 "
 
-PREFERRED_VERSION_go = "1.25.0"
-PREFERRED_VERSION_golang-native = "1.25.0"
-PREFERRED_VERSION_golang-nativesdk = "1.25.0"
+PREFERRED_VERSION_go = "1.25.2"
+PREFERRED_VERSION_golang-native = "1.25.2"
+PREFERRED_VERSION_golang-nativesdk = "1.25.2"
