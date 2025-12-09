@@ -20,10 +20,12 @@ DISTRO_FEATURES:remove = " directfb "
 #DISTRO_FEATURES:append = " wayland acl xattr pam "
 # security + selinux layers
 #DISTRO_FEATURES:append = " acl xattr pam seccomp security opengl wayland selinux "
-DISTRO_FEATURES += " acl xattr pam seccomp security opengl wayland selinux "
+DISTRO_FEATURES += " acl xattr pam seccomp security opengl wayland selinux wifi bluetooth systemd "
 
 # selinux default policy
 PREFERRED_PROVIDER_virtual/refpolicy ?= "refpolicy-mls"
+
+PACKAGECONFIG:append:connman = " wifi bluez wpa-supplicant iptables "
 
 EXTRA_IMAGE_FEATURES += "read-only-rootfs"
 
