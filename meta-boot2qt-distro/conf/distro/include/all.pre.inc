@@ -36,6 +36,7 @@ EXTRA_IMAGE_FEATURES += "read-only-rootfs"
 # x11 stuff: xauth xhost xdotool
 # gtk stuff: gtk+ gtkmm gtkmm3 gtkmm4 gtk+3 gtk4
 # rustdesk (enable all the above): rustdesk
+# networkmanager and networkmanager-nmcli but libqt6networksettings6 depends on connman
 IMAGE_INSTALL:append = " \
     libvpx \
     aom \
@@ -60,8 +61,6 @@ IMAGE_INSTALL:append = " \
     embuer \
     hmidaemon \
     sdl2 \
-    networkmanager \
-    networkmanager-nmcli \
 "
 
 PREFERRED_VERSION_go = "1.25.2"
