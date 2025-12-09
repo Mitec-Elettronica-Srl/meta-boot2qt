@@ -25,7 +25,7 @@ DISTRO_FEATURES += " acl xattr pam seccomp security opengl wayland selinux "
 # selinux default policy
 PREFERRED_PROVIDER_virtual/refpolicy ?= "refpolicy-mls"
 
-#EXTRA_IMAGE_FEATURES += "read-only-rootfs"
+EXTRA_IMAGE_FEATURES += "read-only-rootfs"
 
 # If you have access to QtSafeRenderer sources, either from git or QtSDK,
 # you can enable it by uncommenting following line
