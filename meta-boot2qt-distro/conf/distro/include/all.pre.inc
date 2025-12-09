@@ -71,7 +71,7 @@ PREFERRED_VERSION_golang-nativesdk = "1.25.2"
 IMAGE_CLASSES += "extrausers"
 EXTRA_USERS_PARAMS = "\
     groupadd -g 1002 user; \
-    useradd -s /bin/bash -d /home/autologin -m -e 2199-12-31 --no-user-group -g 1002 -u 1002 user; \
+    useradd -s /bin/bash -d /home/autologin -m -e 2199-12-31 -p '$6$xyz$D3/dg8OfFSo65nTIpEA0v0R48x5Tr8niRnQ/hdvRhmMDbgMIInbEbPGY/y0pvjhhoKTTRTw.2uawDJurt7imn/' --no-user-group -g 1002 -u 1002 user; \
     usermod -aG render user; \
     usermod -aG video user; \
     usermod -aG audio user; \
