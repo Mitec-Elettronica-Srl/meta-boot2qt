@@ -60,6 +60,8 @@ IMAGE_INSTALL:append = " \
     embuer \
     hmidaemon \
     sdl2 \
+    networkmanager \
+    networkmanager-nmcli \
 "
 
 PREFERRED_VERSION_go = "1.25.2"
