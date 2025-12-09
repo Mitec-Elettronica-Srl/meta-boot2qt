@@ -59,6 +59,7 @@ IMAGE_INSTALL:append = " \
     softether \
     embuer \
     hmidaemon \
+    sdl2 \
 "
 
 PREFERRED_VERSION_go = "1.25.2"
