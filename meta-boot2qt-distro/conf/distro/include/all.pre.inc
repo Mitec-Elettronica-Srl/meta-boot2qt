@@ -61,6 +61,7 @@ IMAGE_INSTALL:append = " \
     embuer \
     hmidaemon \
     sdl2 \
+    rfkill \
 "
 
 PREFERRED_VERSION_go = "1.25.2"
