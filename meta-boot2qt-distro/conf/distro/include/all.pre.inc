@@ -65,3 +65,13 @@ IMAGE_INSTALL:append = " \
 PREFERRED_VERSION_go = "1.25.2"
 PREFERRED_VERSION_golang-native = "1.25.2"
 PREFERRED_VERSION_golang-nativesdk = "1.25.2"
+
+IMAGE_CLASSES += "extrausers"
+EXTRA_USERS_PARAMS = "\
+    usermod -aG render user; \
+    usermod -aG video user; \
+    usermod -aG audio user; \
+    usermod -aG seat user; \
+    usermod -aG input user; \
+    usermod -aG tty user; \
+"
