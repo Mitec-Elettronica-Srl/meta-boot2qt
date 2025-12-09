@@ -78,4 +78,5 @@ EXTRA_USERS_PARAMS = "\
     usermod -aG seat user; \
     usermod -aG input user; \
     usermod -aG tty user; \
+    usermod -aG plugdev user; \
 "
