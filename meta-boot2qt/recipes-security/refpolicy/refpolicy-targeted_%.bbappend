@@ -16,4 +16,5 @@ SRC_URI += " \
     file://0015-firewalld-Allow-firewall-cmd-to-be-called-from-syste.patch \
     file://0016-gcc_config_t-allow-reading-cgroup-files-for-cpu.max.patch \
     file://0017-logging-allow-syslogd_t-syslog_tls_port_t-name_conne.patch \
+    file://0001-fix-bin-commands.patch \
 "

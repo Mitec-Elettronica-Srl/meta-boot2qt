@@ -1,0 +1,36 @@
+From 633946ffb8c45af2e2179dc3ec5964b56fe1716c Mon Sep 17 00:00:00 2001
+From: "benato.denis96@gmail.com" <benato.denis96@gmail.com>
+Date: Fri, 12 Dec 2025 16:52:35 +0100
+Subject: [PATCH] fix /bin commands
+
+---
+ policy/modules/kernel/corecommands.fc | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/policy/modules/kernel/corecommands.fc b/policy/modules/kernel/corecommands.fc
+index a53425b0a..b91a6c8bb 100644
+--- a/policy/modules/kernel/corecommands.fc
++++ b/policy/modules/kernel/corecommands.fc
+@@ -147,6 +147,19 @@ ifdef(`distro_gentoo',`
+ /opt/vmware/workstation/lib/lib/wrapper-gtk24\.sh -- gen_context(system_u:object_r:bin_t,s0)
+ ')
+ 
++#
++# /bin
++#
++/bin/sh			--	gen_context(system_u:object_r:shell_exec_t,s0)
++/bin/d?ash		--	gen_context(system_u:object_r:shell_exec_t,s0)
++/bin/bash		--	gen_context(system_u:object_r:shell_exec_t,s0)
++/bin/bash2		--	gen_context(system_u:object_r:shell_exec_t,s0)
++/bin/mksh       --	gen_context(system_u:object_r:shell_exec_t,s0)
++/bin/fish		--	gen_context(system_u:object_r:shell_exec_t,s0)
++/bin/tcsh		--	gen_context(system_u:object_r:shell_exec_t,s0)
++/bin/yash		--	gen_context(system_u:object_r:shell_exec_t,s0)
++/bin/zsh.*		--	gen_context(system_u:object_r:shell_exec_t,s0)
++
+ #
+ # /usr
+ #
+-- 
+2.47.3
+
