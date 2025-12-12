@@ -16,7 +16,7 @@ IMAGE_FEATURES += "\
     hwcodecs \
 "
 
-inherit core-image-selinux
+inherit core-image enable-audit selinux enable-selinux selinux-image deploy-buildinfo
 inherit consistent_timestamps
 
 # add some extra space to the device images
