@@ -1,0 +1,27 @@
+From c4d814e2155879018079ad66eab1c1accf24f5f7 Mon Sep 17 00:00:00 2001
+From: Rahul Sandhu <nvraxn@gmail.com>
+Date: Mon, 3 Nov 2025 14:25:35 +0000
+Subject: [PATCH 03/17] wayland: grant access to /dev/input for libinput
+
+Signed-off-by: Rahul Sandhu <nvraxn@gmail.com>
+---
+ policy/modules/session/wayland.te | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/policy/modules/session/wayland.te b/policy/modules/session/wayland.te
+index 9e411ec17..bf60492c1 100644
+--- a/policy/modules/session/wayland.te
++++ b/policy/modules/session/wayland.te
+@@ -66,6 +66,9 @@ userdom_user_runtime_filetrans(wayland_compositor, wayland_runtime_t, file, "way
+ # GPU Access
+ dev_rw_dri(wayland_compositor)
+ 
++# libinput
++dev_rw_input_dev(wayland_compositor)
++
+ files_read_usr_files(wayland_compositor)
+ 
+ # Fonts
+-- 
+2.47.3
+

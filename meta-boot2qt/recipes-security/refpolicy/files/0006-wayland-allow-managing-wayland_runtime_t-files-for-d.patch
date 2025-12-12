@@ -1,0 +1,26 @@
+From b37e40a284bf35d9b3fa77f1092953181059e396 Mon Sep 17 00:00:00 2001
+From: Rahul Sandhu <nvraxn@gmail.com>
+Date: Mon, 3 Nov 2025 14:25:36 +0000
+Subject: [PATCH 06/17] wayland: allow managing wayland_runtime_t files for
+ display lock file
+
+Signed-off-by: Rahul Sandhu <nvraxn@gmail.com>
+---
+ policy/modules/session/wayland.te | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/policy/modules/session/wayland.te b/policy/modules/session/wayland.te
+index 0006e1cff..121ac385a 100644
+--- a/policy/modules/session/wayland.te
++++ b/policy/modules/session/wayland.te
+@@ -39,6 +39,7 @@ allow wayland_compositor wayland_client_tmpfs_type:file mmap_rw_inherited_file_p
+ allow wayland_compositor wayland_client:fd use;
+ allow wayland_compositor wayland_client_sandboxed:fd use;
+ 
++allow wayland_compositor wayland_runtime_t:file manage_file_perms;
+ allow wayland_compositor wayland_runtime_t:sock_file manage_sock_file_perms;
+ 
+ # Compositors may make more privileged sockets in $XDG_RUNTIME_DIR, so let's
+-- 
+2.47.3
+

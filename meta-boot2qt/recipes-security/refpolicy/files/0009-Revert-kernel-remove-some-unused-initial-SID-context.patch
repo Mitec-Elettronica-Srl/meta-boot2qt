@@ -1,0 +1,45 @@
+From 1be50a78727f04e484a6d9d18c8247e8e299f0a1 Mon Sep 17 00:00:00 2001
+From: Chris PeBenito <pebenito@ieee.org>
+Date: Mon, 3 Nov 2025 10:56:13 -0500
+Subject: [PATCH 09/17] Revert "kernel: remove some unused initial SID
+ contexts"
+
+---
+ policy/modules/kernel/kernel.te | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/policy/modules/kernel/kernel.te b/policy/modules/kernel/kernel.te
+index 6e7302bf5..26578a26d 100644
+--- a/policy/modules/kernel/kernel.te
++++ b/policy/modules/kernel/kernel.te
+@@ -215,12 +215,23 @@ sid file gen_context(system_u:object_r:unlabeled_t,s0)
+ sid unlabeled gen_context(system_u:object_r:unlabeled_t,mls_systemhigh)
+ neverallow * unlabeled_t:file entrypoint;
+ 
+-# Default socket label if no kernel sock is available
++# These initial sids are no longer used, and can be removed:
+ sid any_socket		gen_context(system_u:object_r:unlabeled_t,mls_systemhigh)
+-
+-# Label for userspace tasks surviving from early boot if
+-# userspace_initial_context policycap is defined.
++sid file_labels		gen_context(system_u:object_r:unlabeled_t,s0)
++sid icmp_socket		gen_context(system_u:object_r:unlabeled_t,mls_systemhigh)
++sid igmp_packet		gen_context(system_u:object_r:unlabeled_t,mls_systemhigh)
+ sid init		gen_context(system_u:object_r:unlabeled_t,s0)
++sid kmod		gen_context(system_u:object_r:unlabeled_t,mls_systemhigh)
++sid policy		gen_context(system_u:object_r:unlabeled_t,mls_systemhigh)
++sid scmp_packet		gen_context(system_u:object_r:unlabeled_t,mls_systemhigh)
++sid sysctl_modprobe 	gen_context(system_u:object_r:unlabeled_t,s0)
++sid sysctl_fs		gen_context(system_u:object_r:unlabeled_t,s0)
++sid sysctl_kernel	gen_context(system_u:object_r:unlabeled_t,s0)
++sid sysctl_net		gen_context(system_u:object_r:unlabeled_t,s0)
++sid sysctl_net_unix	gen_context(system_u:object_r:unlabeled_t,s0)
++sid sysctl_vm		gen_context(system_u:object_r:unlabeled_t,s0)
++sid sysctl_dev		gen_context(system_u:object_r:unlabeled_t,s0)
++sid tcp_socket		gen_context(system_u:object_r:unlabeled_t,mls_systemhigh)
+ 
+ ########################################
+ #
+-- 
+2.47.3
+

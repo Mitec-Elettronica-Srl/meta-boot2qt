@@ -1,0 +1,27 @@
+From 0f016f6f0f80660e308aa0e71396747ef1383c65 Mon Sep 17 00:00:00 2001
+From: Rahul Sandhu <nvraxn@gmail.com>
+Date: Mon, 3 Nov 2025 14:25:35 +0000
+Subject: [PATCH 02/17] wayland: allow reading udev runtime files for input
+ devices
+
+Signed-off-by: Rahul Sandhu <nvraxn@gmail.com>
+---
+ policy/modules/session/wayland.te | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/policy/modules/session/wayland.te b/policy/modules/session/wayland.te
+index c1b93b9c0..9e411ec17 100644
+--- a/policy/modules/session/wayland.te
++++ b/policy/modules/session/wayland.te
+@@ -79,3 +79,8 @@ optional_policy(`
+ 	# For seats
+ 	systemd_use_logind_fds(wayland_compositor)
+ ')
++
++optional_policy(`
++	# For input devices
++	udev_read_runtime_files(wayland_compositor)
++')
+-- 
+2.47.3
+

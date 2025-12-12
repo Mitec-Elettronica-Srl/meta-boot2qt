@@ -1,0 +1,66 @@
+From a28fb48bca542c4c3094227a167e284c3434989f Mon Sep 17 00:00:00 2001
+From: Rahul Sandhu <nvraxn@gmail.com>
+Date: Mon, 3 Nov 2025 02:18:02 +0000
+Subject: [PATCH 01/17] xserver: fixup labelling for mesa cache
+
+Label mesa_shader_cache_db[1][2], mesa_shader_cache_sf[3][4] and
+radv_builtin_shaders[5] as mesa_shader_cache_t.
+
+[1] https://gitlab.freedesktop.org/mesa/mesa/-/blob/5d92c92ce56c4c3b9d98936fee51129281923e1a/docs/envvars.rst#L263-266
+[2] https://gitlab.freedesktop.org/mesa/mesa/-/blob/5d92c92ce56c4c3b9d98936fee51129281923e1a/src/util/disk_cache.h#L48
+[3] https://gitlab.freedesktop.org/mesa/mesa/-/blob/5d92c92ce56c4c3b9d98936fee51129281923e1a/docs/envvars.rst#L219-232
+[4] https://gitlab.freedesktop.org/mesa/mesa/-/blob/5d92c92ce56c4c3b9d98936fee51129281923e1a/src/util/disk_cache.h#L47
+[5] https://gitlab.freedesktop.org/mesa/mesa/-/blob/5d92c92ce56c4c3b9d98936fee51129281923e1a/src/amd/vulkan/radv_physical_device.c#L2495
+
+Signed-off-by: Rahul Sandhu <nvraxn@gmail.com>
+---
+ policy/modules/services/xserver.fc | 3 +++
+ policy/modules/services/xserver.if | 3 +++
+ policy/modules/services/xserver.te | 3 +++
+ 3 files changed, 9 insertions(+)
+
+diff --git a/policy/modules/services/xserver.fc b/policy/modules/services/xserver.fc
+index 362f458b1..aa2b7fa73 100644
+--- a/policy/modules/services/xserver.fc
++++ b/policy/modules/services/xserver.fc
+@@ -2,6 +2,9 @@
+ # HOME_DIR
+ #
+ HOME_DIR/\.cache/mesa_shader_cache(/.*)?	gen_context(system_u:object_r:mesa_shader_cache_t,s0)
++HOME_DIR/\.cache/mesa_shader_cache_db(/.*)?	gen_context(system_u:object_r:mesa_shader_cache_t,s0)
++HOME_DIR/\.cache/mesa_shader_cache_sf(/.*)?	gen_context(system_u:object_r:mesa_shader_cache_t,s0)
++HOME_DIR/\.cache/radv_builtin_shaders(/.*)?	gen_context(system_u:object_r:mesa_shader_cache_t,s0)
+ HOME_DIR/\.cache/fontconfig(/.*)?	gen_context(system_u:object_r:user_fonts_cache_t,s0)
+ HOME_DIR/\.dmrc		--	gen_context(system_u:object_r:dmrc_home_t,s0)
+ HOME_DIR/\.config/fontconfig/conf\.d(/.*)?	--	gen_context(system_u:object_r:user_fonts_config_t,s0)
+diff --git a/policy/modules/services/xserver.if b/policy/modules/services/xserver.if
+index fe9c9c466..368b2c4fc 100644
+--- a/policy/modules/services/xserver.if
++++ b/policy/modules/services/xserver.if
+@@ -226,6 +226,9 @@ template(`xserver_role',`
+ 
+ 	optional_policy(`
+ 		xdg_cache_filetrans($2, mesa_shader_cache_t, dir, "mesa_shader_cache")
++		xdg_cache_filetrans($2, mesa_shader_cache_t, dir, "mesa_shader_cache_db")
++		xdg_cache_filetrans($2, mesa_shader_cache_t, dir, "mesa_shader_cache_sf")
++		xdg_cache_filetrans($2, mesa_shader_cache_t, dir, "radv_builtin_shaders")
+ 	')
+ ')
+ 
+diff --git a/policy/modules/services/xserver.te b/policy/modules/services/xserver.te
+index 4315674b6..14c935cac 100644
+--- a/policy/modules/services/xserver.te
++++ b/policy/modules/services/xserver.te
+@@ -744,6 +744,9 @@ manage_dirs_pattern(xserver_t, mesa_shader_cache_t, mesa_shader_cache_t)
+ manage_files_pattern(xserver_t, mesa_shader_cache_t, mesa_shader_cache_t)
+ allow xserver_t mesa_shader_cache_t:file map;
+ xdg_cache_filetrans(xserver_t, mesa_shader_cache_t, dir, "mesa_shader_cache")
++xdg_cache_filetrans(xserver_t, mesa_shader_cache_t, dir, "mesa_shader_cache_db")
++xdg_cache_filetrans(xserver_t, mesa_shader_cache_t, dir, "mesa_shader_cache_sf")
++xdg_cache_filetrans(xserver_t, mesa_shader_cache_t, dir, "radv_builtin_shaders")
+ xdg_generic_user_home_dir_filetrans_cache(xserver_t, dir, ".cache")
+ 
+ # for writing to ~/.local/share/sddm/xorg-session.log
+-- 
+2.47.3
+
