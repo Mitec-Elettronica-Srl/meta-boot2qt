@@ -1,4 +1,5 @@
-FILESEXTRAPATHS:append := "${THISDIR}/refpolicy"
+FILESEXTRAPATHS:prepend := "${THISDIR}/refpolicy:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += " \
     file://0001-xserver-fixup-labelling-for-mesa-cache.patch \
