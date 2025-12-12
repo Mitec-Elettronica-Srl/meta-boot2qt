@@ -23,7 +23,7 @@ DISTRO_FEATURES:remove = " directfb "
 DISTRO_FEATURES += " acl xattr pam seccomp security opengl wayland selinux enable-selinux enable-audit wifi bluetooth systemd "
 
 # selinux default policy
-PREFERRED_PROVIDER_virtual/refpolicy ?= "refpolicy-mls"
+#PREFERRED_PROVIDER_virtual/refpolicy ?= "refpolicy-mls"
 
 PACKAGECONFIG:append:connman = " wifi bluez wpa-supplicant iptables "
 
@@ -65,6 +65,7 @@ IMAGE_INSTALL:append = " \
     sdl2 \
     rfkill \
     packagegroup-core-selinux \
+    refpolicy-targeted \
 "
 
 PREFERRED_VERSION_go = "1.25.2"
