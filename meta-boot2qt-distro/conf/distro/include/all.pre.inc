@@ -66,7 +66,6 @@ IMAGE_INSTALL:append = " \
     rfkill \
     packagegroup-core-selinux \
     refpolicy-targeted \
-    selinux-utils \
     selinux-autorelabel \
 "
 
