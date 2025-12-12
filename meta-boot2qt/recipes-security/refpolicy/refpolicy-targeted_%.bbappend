@@ -1,3 +1,5 @@
+FILESEXTRAPATHS:append := "${THISDIR}/refpolicy"
+
 SRC_URI += " \
     file://0001-xserver-fixup-labelling-for-mesa-cache.patch \
     file://0002-wayland-allow-reading-udev-runtime-files-for-input-d.patch \
