@@ -20,7 +20,7 @@ DISTRO_FEATURES:remove = " directfb "
 #DISTRO_FEATURES:append = " wayland acl xattr pam "
 # security + selinux layers
 #DISTRO_FEATURES:append = " acl xattr pam seccomp security opengl wayland selinux "
-DISTRO_FEATURES += " acl xattr pam seccomp security opengl wayland selinux wifi bluetooth systemd "
+DISTRO_FEATURES += " acl xattr pam seccomp security opengl wayland selinux enable-selinux enable-audit wifi bluetooth systemd "
 
 # selinux default policy
 PREFERRED_PROVIDER_virtual/refpolicy ?= "refpolicy-mls"
@@ -64,6 +64,7 @@ IMAGE_INSTALL:append = " \
     hmidaemon \
     sdl2 \
     rfkill \
+    packagegroup-core-selinux \
 "
 
 PREFERRED_VERSION_go = "1.25.2"
