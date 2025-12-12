@@ -74,7 +74,13 @@ PREFERRED_VERSION_golang-native = "1.25.2"
 PREFERRED_VERSION_golang-nativesdk = "1.25.2"
 
 IMAGE_CLASSES += "extrausers"
+# Unknown password
+#ROOT_PASSWD = "\$5\$zuSsdDk7lSIFPCR8\$S4ECeHXBGwG.BFOVffcZVpTT5LPjhm9Cd8tsym.K4v/"
+
+# Password is 'ciao'
+ROOT_PASSWD= "\$5\$BjRsFgb.i5yza1k3\$Pf22oBl1saYRhJxTOGZmyexfOdgEPiWxwEFFCZuoHhC"
 EXTRA_USERS_PARAMS = "\
+    usermod -p '${ROOT_PASSWD}' root; \
     groupadd -g 1002 user; \
     useradd -s /bin/bash -d /home/autologin -m -e 2199-12-31 -p '$6$xyz$D3/dg8OfFSo65nTIpEA0v0R48x5Tr8niRnQ/hdvRhmMDbgMIInbEbPGY/y0pvjhhoKTTRTw.2uawDJurt7imn/' --no-user-group -g 1002 -u 1002 user; \
     usermod -aG render user; \
