@@ -66,6 +66,9 @@ IMAGE_INSTALL:append = " \
     rfkill \
     packagegroup-core-selinux \
     refpolicy-targeted \
+    selinux \
+    selinux-utils \
+    selinux-autorelabel \
 "
 
 PREFERRED_VERSION_go = "1.25.2"
