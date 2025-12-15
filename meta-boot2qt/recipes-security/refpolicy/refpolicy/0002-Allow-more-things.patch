@@ -1,7 +1,7 @@
 From a20d5d1d3952993153fc2a644a1fedbeae7613d9 Mon Sep 17 00:00:00 2001
 From: "benato.denis96@gmail.com" <benato.denis96@gmail.com>
 Date: Mon, 15 Dec 2025 14:07:01 +0100
-Subject: [PATCH 2/2] Allow more things
+Subject: [PATCH 02/62] Allow more things
 
 ---
  policy/modules/kernel/filesystem.te |  3 ++-
