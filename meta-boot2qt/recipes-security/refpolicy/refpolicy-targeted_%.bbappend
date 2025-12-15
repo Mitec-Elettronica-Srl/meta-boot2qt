@@ -3,11 +3,11 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI = "git://github.com/Mitec-Elettronica-Srl/refpolicy.git;protocol=https;branch=main;name=refpolicy;destsuffix=refpolicy"
 
-SRCREV_refpolicy = "0dc9aa0adf0d90c1dc52846597173390e4770ae6"
+SRCREV_refpolicy = "dd6aa0d0b7087e617a7e21a882fbbdd5ac498ea5"
 
 do_install:append() {
     install -d ${D}/${systemd_unitdir}/system/getty@.service.d/
-    install -Dm755 ${THISDIR}/refpolicy/getty_override.conf ${D}/${systemd_unitdir}/system/getty@.service.d/override.conf
+    install -Dm755 ${S}/systemd/getty_override.conf ${D}/${systemd_unitdir}/system/getty@.service.d/override.conf
 }
 
 FILES:${PN} += " \
