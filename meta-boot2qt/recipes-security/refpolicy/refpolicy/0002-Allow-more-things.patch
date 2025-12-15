@@ -1,17 +1,18 @@
-From ecd59cba5b5829c4692632a838b339b6365b2126 Mon Sep 17 00:00:00 2001
+From d4f93d24fc33f1cc15cabe6827b5e14c8cf30f08 Mon Sep 17 00:00:00 2001
 From: "benato.denis96@gmail.com" <benato.denis96@gmail.com>
 Date: Mon, 15 Dec 2025 14:07:01 +0100
 Subject: [PATCH 2/2] Allow more things
 
 ---
- policy/modules/kernel/kernel.te | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ policy/modules/kernel/kernel.te     |  8 ++++++++
+ policy/modules/system/unconfined.te | 14 ++++++++++++++
+ 2 files changed, 22 insertions(+)
 
 diff --git a/policy/modules/kernel/kernel.te b/policy/modules/kernel/kernel.te
-index 26578a26d..78fe3af82 100644
+index 26578a26d..98ce12c1d 100644
 --- a/policy/modules/kernel/kernel.te
 +++ b/policy/modules/kernel/kernel.te
-@@ -608,3 +608,27 @@ allow kern_unconfined unlabeled_t:filesystem { associate getattr mount quotaget
+@@ -608,3 +608,11 @@ allow kern_unconfined unlabeled_t:filesystem { associate getattr mount quotaget
  allow kern_unconfined unlabeled_t:association { polmatch recvfrom sendto setcontext };
  allow kern_unconfined unlabeled_t:packet { forward_in forward_out recv relabelto send };
  allow kern_unconfined unlabeled_t:process { fork getattr getcap getpgid getrlimit getsched getsession noatsecure ptrace rlimitinh setcap setcurrent setexec setfscreate setkeycreate setpgid setrlimit setsched setsockcreate share siginh signal_perms };
@@ -21,24 +22,33 @@ index 26578a26d..78fe3af82 100644
 +allow kernel_t self:user_namespace create;
 +allow kernel_t unlabeled_t:service { start status stop };
 +
-+optional_policy(`
-+	gen_require(`
-+		type unconfined_t;
-+	')
-+
-+	allow kernel_t unconfined_t:dbus send_msg;
-+	allow kernel_t unconfined_t:process transition;
-+
-+	#============= unconfined_t ==============
-+	allow unconfined_t kernel_t:dbus send_msg;
-+	allow unconfined_t unlabeled_t:file entrypoint;
-+
-+	#!!!! This avc can be allowed using the boolean 'allow_execmod'
-+	allow unconfined_t user_tmpfs_t:file execmod;
-+')
-+
 +#============= unlabeled_t ==============
 +allow unlabeled_t tmpfs_t:filesystem associate;
+diff --git a/policy/modules/system/unconfined.te b/policy/modules/system/unconfined.te
+index 71e1b15ae..cc8b4e574 100644
+--- a/policy/modules/system/unconfined.te
++++ b/policy/modules/system/unconfined.te
+@@ -80,6 +80,20 @@ tunable_policy(`user_execmod_tmpfs', `
+ 	userdom_execmod_user_tmpfs_files(unconfined_t)
+ ')
+ 
++gen_require(`
++	type kernel_t, unlabeled_t, user_tmpfs_t;
++	class dbus send_msg;
++')
++
++# allow limited interaction between kernel_t and unconfined_t
++allow kernel_t unconfined_t:dbus send_msg;
++allow kernel_t unconfined_t:process transition;
++allow unconfined_t kernel_t:dbus send_msg;
++allow unconfined_t unlabeled_t:file entrypoint;
++
++#!!!! This avc can be allowed using the boolean 'allow_execmod'
++allow unconfined_t user_tmpfs_t:file execmod;
++
+ optional_policy(`
+ 	apache_run_helper(unconfined_t, unconfined_r)
+ 	apache_role(unconfined, unconfined_t, unconfined_application_exec_domain, unconfined_r)
 -- 
 2.47.3
 
