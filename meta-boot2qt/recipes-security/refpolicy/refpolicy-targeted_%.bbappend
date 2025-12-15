@@ -7,7 +7,7 @@ SRCREV_refpolicy = "f72f1f06a19d2fc63d26ebd9150e394bc2afdabe"
 
 do_install:append() {
     install -d ${D}/${systemd_unitdir}/system/getty@.service.d/
-    install -Dm755 ${WORKDIR}/getty_override.conf ${D}/${systemd_unitdir}/system/getty@.service.d/override.conf
+    install -Dm755 ${THISDIR}/refpolicy/getty_override.conf ${D}/${systemd_unitdir}/system/getty@.service.d/override.conf
 }
 
 FILES:${PN} += " \
