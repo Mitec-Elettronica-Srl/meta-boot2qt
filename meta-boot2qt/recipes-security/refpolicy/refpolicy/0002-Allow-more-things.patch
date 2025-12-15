@@ -1,0 +1,37 @@
+From 9ca0f6bf70279793c5eba7d2c7130a3fae9ae63a Mon Sep 17 00:00:00 2001
+From: "benato.denis96@gmail.com" <benato.denis96@gmail.com>
+Date: Mon, 15 Dec 2025 14:07:01 +0100
+Subject: [PATCH 2/2] Allow more things
+
+---
+ policy/modules/kernel/kernel.te | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/policy/modules/kernel/kernel.te b/policy/modules/kernel/kernel.te
+index 26578a26d..ce189f352 100644
+--- a/policy/modules/kernel/kernel.te
++++ b/policy/modules/kernel/kernel.te
+@@ -608,3 +608,20 @@ allow kern_unconfined unlabeled_t:filesystem { associate getattr mount quotaget
+ allow kern_unconfined unlabeled_t:association { polmatch recvfrom sendto setcontext };
+ allow kern_unconfined unlabeled_t:packet { forward_in forward_out recv relabelto send };
+ allow kern_unconfined unlabeled_t:process { fork getattr getcap getpgid getrlimit getsched getsession noatsecure ptrace rlimitinh setcap setcurrent setexec setfscreate setkeycreate setpgid setrlimit setsched setsockcreate share siginh signal_perms };
++
++#============= kernel_t ==============
++allow kernel_t self:capability2 checkpoint_restore;
++allow kernel_t self:user_namespace create;
++allow kernel_t unconfined_t:dbus send_msg;
++allow kernel_t unconfined_t:process transition;
++allow kernel_t unlabeled_t:service { start status stop };
++
++#============= unconfined_t ==============
++allow unconfined_t kernel_t:dbus send_msg;
++allow unconfined_t unlabeled_t:file entrypoint;
++
++#!!!! This avc can be allowed using the boolean 'allow_execmod'
++allow unconfined_t user_tmpfs_t:file execmod;
++
++#============= unlabeled_t ==============
++allow unlabeled_t tmpfs_t:filesystem associate;
+-- 
+2.47.3
+

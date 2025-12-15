@@ -23,4 +23,14 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI += " \
     file://0001-fix-bin-commands.patch \
+    file://0002-Allow-more-things.patch \
+"
+
+do_install:append() {
+    install -d ${D}/${systemd_unitdir}/system/getty@.service.d/
+    install -Dm755 ${WORKDIR}/getty_override.conf ${D}/${systemd_unitdir}/system/getty@.service.d/override.conf
+}
+
+FILES:${PN} += " \
+    ${systemd_unitdir}/system/getty@.service.d/override.conf \
 "
