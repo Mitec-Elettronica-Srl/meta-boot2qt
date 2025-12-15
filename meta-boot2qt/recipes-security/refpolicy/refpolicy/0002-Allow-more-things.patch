@@ -1,12 +1,12 @@
-From d4f93d24fc33f1cc15cabe6827b5e14c8cf30f08 Mon Sep 17 00:00:00 2001
+From 8835aadcb09a2fae51ab00b4b33e53b4f2826b9d Mon Sep 17 00:00:00 2001
 From: "benato.denis96@gmail.com" <benato.denis96@gmail.com>
 Date: Mon, 15 Dec 2025 14:07:01 +0100
 Subject: [PATCH 2/2] Allow more things
 
 ---
  policy/modules/kernel/kernel.te     |  8 ++++++++
- policy/modules/system/unconfined.te | 14 ++++++++++++++
- 2 files changed, 22 insertions(+)
+ policy/modules/system/unconfined.te | 16 ++++++++++++++++
+ 2 files changed, 24 insertions(+)
 
 diff --git a/policy/modules/kernel/kernel.te b/policy/modules/kernel/kernel.te
 index 26578a26d..98ce12c1d 100644
@@ -25,10 +25,10 @@ index 26578a26d..98ce12c1d 100644
 +#============= unlabeled_t ==============
 +allow unlabeled_t tmpfs_t:filesystem associate;
 diff --git a/policy/modules/system/unconfined.te b/policy/modules/system/unconfined.te
-index 71e1b15ae..cc8b4e574 100644
+index 71e1b15ae..926cdee92 100644
 --- a/policy/modules/system/unconfined.te
 +++ b/policy/modules/system/unconfined.te
-@@ -80,6 +80,20 @@ tunable_policy(`user_execmod_tmpfs', `
+@@ -80,6 +80,22 @@ tunable_policy(`user_execmod_tmpfs', `
  	userdom_execmod_user_tmpfs_files(unconfined_t)
  ')
  
@@ -41,7 +41,9 @@ index 71e1b15ae..cc8b4e574 100644
 +allow kernel_t unconfined_t:dbus send_msg;
 +allow kernel_t unconfined_t:process transition;
 +allow unconfined_t kernel_t:dbus send_msg;
-+allow unconfined_t unlabeled_t:file entrypoint;
++
++# this is wrong and neverallow will make the build fail
++#allow unconfined_t unlabeled_t:file entrypoint;
 +
 +#!!!! This avc can be allowed using the boolean 'allow_execmod'
 +allow unconfined_t user_tmpfs_t:file execmod;
