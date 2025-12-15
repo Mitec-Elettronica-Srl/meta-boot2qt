@@ -1,13 +1,28 @@
-From 8835aadcb09a2fae51ab00b4b33e53b4f2826b9d Mon Sep 17 00:00:00 2001
+From a20d5d1d3952993153fc2a644a1fedbeae7613d9 Mon Sep 17 00:00:00 2001
 From: "benato.denis96@gmail.com" <benato.denis96@gmail.com>
 Date: Mon, 15 Dec 2025 14:07:01 +0100
 Subject: [PATCH 2/2] Allow more things
 
 ---
+ policy/modules/kernel/filesystem.te |  3 ++-
  policy/modules/kernel/kernel.te     |  8 ++++++++
  policy/modules/system/unconfined.te | 16 ++++++++++++++++
- 2 files changed, 24 insertions(+)
+ 3 files changed, 26 insertions(+), 1 deletion(-)
 
+diff --git a/policy/modules/kernel/filesystem.te b/policy/modules/kernel/filesystem.te
+index c28efe129..45665c4a1 100644
+--- a/policy/modules/kernel/filesystem.te
++++ b/policy/modules/kernel/filesystem.te
+@@ -364,7 +364,8 @@ allow filesystem_unconfined_type filesystem_type:filesystem { associate getattr
+ # Create/access other files. fs_type is to pick up various
+ # pseudo filesystem types that are applied to both the filesystem
+ # and its files.
+-allow filesystem_unconfined_type filesystem_type:file { entrypoint exec_file_perms execmod manage_file_perms mounton quotaon relabel_file_perms watch watch_mount watch_reads watch_sb watch_with_perm };
++# Exclude unlabeled_t from entrypoint to comply with neverallow rule.
++allow filesystem_unconfined_type { filesystem_type -unlabeled_t }:file { entrypoint exec_file_perms execmod manage_file_perms mounton quotaon relabel_file_perms watch watch_mount watch_reads watch_sb watch_with_perm };
+ allow filesystem_unconfined_type filesystem_type:lnk_file  { append execmod execute manage_lnk_file_perms map mounton open quotaon relabel_lnk_file_perms watch watch_mount watch_reads watch_sb watch_with_perm };
+ allow filesystem_unconfined_type filesystem_type:sock_file { execmod execute manage_sock_file_perms map mounton quotaon relabel_sock_file_perms watch watch_mount watch_reads watch_sb watch_with_perm };
+ allow filesystem_unconfined_type filesystem_type:fifo_file { execmod execute manage_fifo_file_perms map mounton quotaon relabel_fifo_file_perms watch watch_mount watch_reads watch_sb watch_with_perm };
 diff --git a/policy/modules/kernel/kernel.te b/policy/modules/kernel/kernel.te
 index 26578a26d..98ce12c1d 100644
 --- a/policy/modules/kernel/kernel.te
