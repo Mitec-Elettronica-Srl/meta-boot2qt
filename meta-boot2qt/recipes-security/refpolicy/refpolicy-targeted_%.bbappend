@@ -3,7 +3,7 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI = "git://github.com/Mitec-Elettronica-Srl/refpolicy.git;protocol=https;branch=main;name=refpolicy;destsuffix=refpolicy"
 
-SRCREV_refpolicy = "602f3e8b518b09fed035a57a1aba43de4042b8d6"
+SRCREV_refpolicy = "b6d439eac5ebe7c996df785247fd606c6b2398ed"
 
 do_install:append() {
     install -d ${D}/${systemd_unitdir}/system/getty@.service.d/
