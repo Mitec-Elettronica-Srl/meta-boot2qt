@@ -3,6 +3,12 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI = "git://github.com/Mitec-Elettronica-Srl/refpolicy.git;protocol=https;branch=main;name=refpolicy;destsuffix=refpolicy"
 
+# Specific config files for Poky
+SRC_URI += "file://customizable_types \
+            file://setrans-mls.conf \
+            file://setrans-mcs.conf \
+           "
+
 SRCREV_refpolicy = "4a481997adc971ae911c27ae30df31e03baf83e7"
 
 do_compile:append() {
