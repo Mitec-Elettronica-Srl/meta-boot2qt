@@ -19,6 +19,8 @@ IMAGE_FEATURES += "\
 inherit core-image enable-audit selinux enable-selinux selinux-image deploy-buildinfo
 inherit consistent_timestamps
 
+FIRST_BOOT_RELABEL="0"
+
 # add some extra space to the device images
 IMAGE_ROOTFS_EXTRA_SPACE = "100000"
 
