@@ -9,7 +9,7 @@ SRC_URI += "file://customizable_types \
             file://setrans-mcs.conf \
            "
 
-SRCREV_refpolicy = "1bde4f27a3e089159402de2ab27c5545cc1189ec"
+SRCREV_refpolicy = "40b0452c5e30bc539ee564f2dadaf8580c099428"
 
 do_install:append() {
     install -d ${D}/${systemd_unitdir}/system/getty@.service.d/
