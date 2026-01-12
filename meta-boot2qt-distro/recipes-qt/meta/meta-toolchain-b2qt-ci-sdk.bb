@@ -12,8 +12,19 @@ SDKIMAGE_FEATURES = "dev-pkgs"
 
 MACHINE_EXTRA_INSTALL_SDK ?= ""
 
-TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-toolchain-host"
-TOOLCHAIN_TARGET_TASK += "packagegroup-qt6-modules ${MACHINE_EXTRA_INSTALL_SDK}"
+TOOLCHAIN_HOST_TASK += " \
+    nativesdk-packagegroup-b2qt-embedded-qt6-toolchain-host \
+    nativesdk-openssl-dev \
+    nativesdk-openssl \
+"
+
+TOOLCHAIN_TARGET_TASK += "\
+    packagegroup-b2qt-embedded-toolchain-target \
+    packagegroup-qt6-modules \
+    openssl-dev \
+    libcurl4 \
+    ${MACHINE_EXTRA_INSTALL_SDK} \
+"
 
 PACKAGE_EXCLUDE_COMPLEMENTARY += "\
   ^libqt6 \

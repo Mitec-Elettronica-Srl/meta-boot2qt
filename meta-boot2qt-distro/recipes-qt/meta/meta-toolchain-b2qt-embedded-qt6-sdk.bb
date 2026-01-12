@@ -8,10 +8,24 @@ LIC_FILES_CHKSUM = "file://${BOOT2QTBASE}/licenses/The-Qt-Company-Commercial;md5
 
 inherit populate_b2qt_qt6_sdk
 
-TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-b2qt-embedded-qt6-toolchain-host"
+SDKIMAGE_FEATURES = "dev-pkgs"
+
+MACHINE_EXTRA_INSTALL_SDK ?= ""
+
+TOOLCHAIN_HOST_TASK += " \
+    nativesdk-packagegroup-b2qt-embedded-qt6-toolchain-host \
+    nativesdk-openssl-dev \
+    nativesdk-openssl \
+"
+
 TOOLCHAIN_TARGET_TASK += "\
     packagegroup-b2qt-embedded-toolchain-target \
     packagegroup-qt6-modules \
+    openssl-dev \
+    libcurl4 \
+    qtquickdesigner-components-dev \
+    qtquickdesigner-components-plugins \
+    ${MACHINE_EXTRA_INSTALL_SDK} \
 "
 
 PACKAGE_EXCLUDE_COMPLEMENTARY += "qtwebengine-dbg"
