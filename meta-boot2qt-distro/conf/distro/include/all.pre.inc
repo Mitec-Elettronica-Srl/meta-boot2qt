@@ -1,3 +1,7 @@
+# Defaults to clang and include it in the SDK
+TOOLCHAIN ?= "clang"
+CLANGSDK = "1"
+
 # This is used by genimage.sh
 IMAGE_FSTYPES += "tar"
 
