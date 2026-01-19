@@ -71,6 +71,7 @@ IMAGE_INSTALL:append = " \
     packagegroup-core-selinux \
     refpolicy-targeted \
     selinux-autorelabel \
+    lldb-server \
 "
 
 PREFERRED_VERSION_go = "1.25.2"
