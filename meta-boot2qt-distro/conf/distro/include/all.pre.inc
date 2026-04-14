@@ -26,7 +26,7 @@ DISTRO_FEATURES:remove = " directfb "
 #DISTRO_FEATURES:append = " wayland acl xattr pam "
 # security + selinux layers
 #DISTRO_FEATURES:append = " acl xattr pam seccomp security opengl wayland selinux "
-DISTRO_FEATURES += " acl xattr pam seccomp security opengl wayland selinux enable-selinux enable-audit wifi bluetooth systemd "
+DISTRO_FEATURES += " acl xattr pam seccomp security opengl wayland selinux enable-selinux enable-audit wifi bluetooth systemd"
 
 # selinux default policy
 PREFERRED_PROVIDER_virtual/refpolicy ?= "refpolicy-targeted"
@@ -74,6 +74,7 @@ IMAGE_INSTALL:append = " \
     refpolicy-targeted \
     selinux-autorelabel \
     lldb-server \
+    wireguard-tools \
 "
 
 PREFERRED_VERSION_go = "1.25.2"
